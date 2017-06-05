@@ -14,7 +14,7 @@ public class CarAI : MonoBehaviour {
     public WheelCollider wheelrr;
 
     private List<Transform> nodes;
-    private int current = 0;
+    private int current = 7;
 	// Use this for initialization
 	void Start () {
         Transform[] pathTransforms = path.GetComponentsInChildren<Transform>();
