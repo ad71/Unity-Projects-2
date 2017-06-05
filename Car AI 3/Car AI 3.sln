@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Car AI 3.Plugins", "Car AI 3.Plugins.csproj", "{8A476861-3CEE-1EAC-B731-5B7976DFF5C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Car AI 3", "Car AI 3.csproj", "{AC763C82-637C-09EE-15BA-4A44B5D80A94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Car AI 3.Editor.Plugins", "Car AI 3.Editor.Plugins.csproj", "{307C5DBB-E6C7-1F95-2541-1E9AF5D3E040}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8A476861-3CEE-1EAC-B731-5B7976DFF5C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A476861-3CEE-1EAC-B731-5B7976DFF5C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A476861-3CEE-1EAC-B731-5B7976DFF5C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A476861-3CEE-1EAC-B731-5B7976DFF5C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC763C82-637C-09EE-15BA-4A44B5D80A94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC763C82-637C-09EE-15BA-4A44B5D80A94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC763C82-637C-09EE-15BA-4A44B5D80A94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC763C82-637C-09EE-15BA-4A44B5D80A94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{307C5DBB-E6C7-1F95-2541-1E9AF5D3E040}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{307C5DBB-E6C7-1F95-2541-1E9AF5D3E040}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{307C5DBB-E6C7-1F95-2541-1E9AF5D3E040}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{307C5DBB-E6C7-1F95-2541-1E9AF5D3E040}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
