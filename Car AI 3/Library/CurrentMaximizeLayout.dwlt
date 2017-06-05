@@ -20,10 +20,10 @@ MonoBehaviour:
     y: 30
     width: 1366
     height: 635
-  m_MinSize: {x: 681, y: 492}
-  m_MaxSize: {x: 14004, y: 14042}
+  m_MinSize: {x: 679, y: 471}
+  m_MaxSize: {x: 14000, y: 14021}
   vertical: 0
-  controlID: 23924
+  controlID: 39881
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -52,7 +52,7 @@ MonoBehaviour:
     height: 336
   m_MaximizeOnPlay: 1
   m_Gizmos: 0
-  m_Stats: 1
+  m_Stats: 0
   m_SelectedSizes: 00000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_TargetDisplay: 0
   m_ZoomArea:
@@ -120,10 +120,10 @@ MonoBehaviour:
     y: 0
     width: 968
     height: 635
-  m_MinSize: {x: 404, y: 492}
-  m_MaxSize: {x: 10002, y: 14042}
+  m_MinSize: {x: 404, y: 471}
+  m_MaxSize: {x: 10000, y: 14021}
   vertical: 1
-  controlID: 23925
+  controlID: 39882
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -147,7 +147,7 @@ MonoBehaviour:
   m_MinSize: {x: 404, y: 221}
   m_MaxSize: {x: 8004, y: 4021}
   vertical: 0
-  controlID: 23926
+  controlID: 39883
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -200,10 +200,10 @@ MonoBehaviour:
     width: 289
     height: 336
   m_TreeViewState:
-    scrollPos: {x: 0, y: 1137}
-    m_SelectedIDs: 6eacfdff
-    m_LastClickedID: -152466
-    m_ExpandedIDs: 849bfdffb89cfdff6eacfdffbedcfdffe6e5feff4ae7feff52eafeff3eedfeff06f0feff2cf3feffa6f8feff90fbfeffbcfdfeffb0fffeff3e02fffff00affff7c0dffffe60fffff9812ffff6a15ffff6419fffffc1affff9e1effff5a22ffff6023ffffa824ffff9e26ffff4a28ffff862afffff82bffffa430ffff5a32ffff0c35ffff7a37ffffee38ffff463bffffe03fffff3243ffffe244ffff9446ffffd647ffff3a4affff2650fffff251ffffdc54ffffde56ffff1258ffff5a59ffff605affffee5cffff8863ffff5265ffff8c67fffff26bffffda71ffff6076ffff3c7affffc67fffffea84ffffb487ffff248affff628effff3c94fffffc97ffff7099fffff09cfffff0b4ffff32baffffb2bcffffbeecffff04edffff50fbffffe2fbffff00000000
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: 50fbffff
+    m_LastClickedID: -1200
+    m_ExpandedIDs: 849bfdffb89cfdff6eacfdffbedcfdffe6e5feff4ae7feff52eafeff3eedfeff06f0feff2cf3feffa6f8feff90fbfeffbcfdfeffb0fffeff3e02fffff00affff7c0dffffe60fffff9812ffff6a15ffff6419fffffc1affff9e1effff5a22ffff6023ffffa824ffff9e26ffff4a28ffff862afffff82bffffa430ffff5a32ffff0c35ffff7a37ffffee38ffff463bffffe03fffff3243ffffe244ffff9446ffffd647ffff3a4affff2650fffff251ffffdc54ffffde56ffff1258ffff5a59ffff605affffee5cffff8863ffff5265ffff8c67fffff26bffffda71ffff6076ffff3c7affffc67fffffea84ffffb487ffff248affff628effff3c94fffffc97ffff7099fffff09cfffff0b4ffff32baffffb2bcffffbeecffff50fbffffe2fbffff00000000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -416,18 +416,18 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Scripts
+    - Assets/Models/Cartoon_Race_Car_03/Textures
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Models/Cartoon_Race_Car_03/Textures
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3
   m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 336}
-    m_SelectedIDs: c82e0000
-    m_LastClickedID: 11976
+    scrollPos: {x: 0, y: 96}
+    m_SelectedIDs: 0aac0000
+    m_LastClickedID: 44042
     m_ExpandedIDs: 00000000f6240000fa250000f0260000062700009e270000d4270000e4270000e8270000ee270000fa2a000006ac00000cac000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -481,8 +481,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 6eacfdff
-    m_LastClickedInstanceID: -152466
+    m_SelectedInstanceIDs: 50fbffff
+    m_LastClickedInstanceID: -1200
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300005e28000000000000
     m_RenameOverlay:
@@ -555,8 +555,8 @@ MonoBehaviour:
     y: 0
     width: 398
     height: 635
-  m_MinSize: {x: 277, y: 71}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 275, y: 50}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
