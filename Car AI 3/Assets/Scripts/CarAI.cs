@@ -6,7 +6,6 @@ using WindowsInput;
 public class CarAI : MonoBehaviour {
 
     public Transform path;
-    public float maxSteerAngle = 35f;
     public float currentSpeed = 0f;
     public float maxSpeed = 10f;
     public WheelCollider wheelfl;
@@ -33,10 +32,10 @@ public class CarAI : MonoBehaviour {
     private void Steer()
     {
         Vector3 relative = this.transform.InverseTransformPoint(nodes[0].position);
-        float steer = relative.x / relative.magnitude * maxSteerAngle;
-        if (steer > 0)
+        float steer = relative.x / relative.magnitude;
+        if (Random.Range(0, 1) <= steer)
             InputSimulator.SimulateKeyPress(VirtualKeyCode.RIGHT);
-        else if (steer < 0)
+        else if (Random.Range(-1, 0) >= steer)
             InputSimulator.SimulateKeyPress(VirtualKeyCode.LEFT);
         Debug.DrawLine(this.transform.position, nodes[current].position);
     }
