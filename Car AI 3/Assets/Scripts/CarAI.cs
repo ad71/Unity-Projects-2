@@ -49,8 +49,9 @@ public class CarAI : MonoBehaviour {
         wheelfl.steerAngle = steer;
         wheelfr.steerAngle = steer;
         // Debug.DrawLine(this.transform.position, nodes[current].position);
-        if (Mathf.Abs(steer) >= 0.5 * maxSteerAngle && currentSpeed > maxSpeed) isBraking = true;
-        else isBraking = false;
+        if (Mathf.Abs(steer) >= 0.5 * maxSteerAngle || currentSpeed > maxSpeed) isBraking = true;
+        else if (Mathf.Abs(steer) < 0.5 * maxSteerAngle && currentSpeed <= maxSpeed) isBraking = false;
+        if (currentSpeed < 0.25 * maxSpeed) isBraking = false;
     }
 
     private void Drive()
