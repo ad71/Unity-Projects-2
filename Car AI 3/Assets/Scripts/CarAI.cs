@@ -9,7 +9,7 @@ public class CarAI : MonoBehaviour {
     public float maxSpeed = 100f;
     public float maxMotorTorque = 100f;
     public float maxBrakingTorque = 200f;
-    public float maxSteerAngle = 35f;
+    public float maxSteerAngle = 45f;
     public Vector3 centerOfMass;
 
     public WheelCollider wheelfl;
@@ -40,7 +40,7 @@ public class CarAI : MonoBehaviour {
     private void Steer()
     {
         Vector3 relative = this.transform.InverseTransformPoint(nodes[current].position);
-        float steer = relative.x / relative.magnitude;
+        float steer = (relative.x / relative.magnitude) * maxSteerAngle;
         wheelfl.steerAngle = steer;
         wheelfr.steerAngle = steer;
         Debug.DrawLine(this.transform.position, nodes[current].position);
