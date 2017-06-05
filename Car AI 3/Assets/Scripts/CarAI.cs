@@ -1,24 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using WindowsInput;
 
 public class CarAI : MonoBehaviour {
 
     public Transform path;
     public float maxSteerAngle = 35f;
     public float currentSpeed = 0f;
-    public float maxSpeed = 150f;
-    public float maxMotorTorque = 300f;
-    public float maxBrakeTorque = 400f;
-
-    [Header("Wheel Colliders")]
+    public float maxSpeed = 10f;
     public WheelCollider wheelfl;
-    public WheelCollider wheelfr;
-    public WheelCollider wheelrl;
-    public WheelCollider wheelrr;
 
     private List<Transform> nodes;
-    private int current = 7;
+    private int current = 0;
 	// Use this for initialization
 	void Start () {
         Transform[] pathTransforms = path.GetComponentsInChildren<Transform>();
@@ -40,8 +34,11 @@ public class CarAI : MonoBehaviour {
     {
         Vector3 relative = this.transform.InverseTransformPoint(nodes[0].position);
         float steer = relative.x / relative.magnitude * maxSteerAngle;
-        wheelfl.steerAngle = steer;
-        wheelfr.steerAngle = steer;
+        if (steer > 0)
+            InputSimulator.SimulateKeyPress(VirtualKeyCode.RIGHT);
+        else if (steer < 0)
+            InputSimulator.SimulateKeyPress(VirtualKeyCode.LEFT);
+        Debug.DrawLine(this.transform.position, nodes[current].position);
     }
 
     private void Drive()
@@ -49,19 +46,17 @@ public class CarAI : MonoBehaviour {
         currentSpeed = 2 * Mathf.PI * wheelfl.radius * wheelfl.rpm * 60 / 1000;
         if (currentSpeed < maxSpeed)
         {
-            wheelrl.motorTorque = maxMotorTorque;
-            wheelrr.motorTorque = maxMotorTorque;
+            InputSimulator.SimulateKeyPress(VirtualKeyCode.UP);
         }
         else
         {
-            wheelrr.motorTorque = 0;
-            wheelrl.motorTorque = 0;
+            InputSimulator.SimulateKeyPress(VirtualKeyCode.DOWN);
         }
     }
 
     private void Next()
     {
-        if (Vector3.Distance(this.transform.position, nodes[current].position) < 3f)
+        if (Vector3.Distance(this.transform.position, nodes[current].position) < 5f)
         {
             if (current == nodes.Count - 1)
             {

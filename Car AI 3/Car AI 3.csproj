@@ -76,6 +76,9 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="InputSimulator">
+      <HintPath>Assets\InputSimulator.0.1.0.0-bin\Release\InputSimulator.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Car AI 3.Plugins.csproj">
@@ -88,6 +91,7 @@
     <Compile Include="Assets\Scripts\Path.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\InputSimulator.0.1.0.0-bin\Release\InputSimulator.XML" />
     <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
     <None Include="Assets\Standard Assets\Vehicles\Aircraft\AircraftGuidelines.txt" />
     <None Include="Assets\Standard Assets\Vehicles\Car\CarGuidelines.txt" />
