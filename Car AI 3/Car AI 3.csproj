@@ -89,6 +89,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CarAI.cs" />
     <Compile Include="Assets\Scripts\Path.cs" />
+    <Compile Include="Assets\Scripts\Wheels.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\InputSimulator.0.1.0.0-bin\Release\InputSimulator.XML" />
