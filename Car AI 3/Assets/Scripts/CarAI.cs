@@ -1,19 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using WindowsInput;
 
 public class CarAI : MonoBehaviour {
 
     public Transform path;
     public float currentSpeed = 0f;
     public float maxSpeed = 1f;
+    public float maxMotorTorque = 100f;
+    public float maxBrakingTorque = 200f;
+    public float maxSteerAngle = 35f;
+    public Vector3 centerOfMass;
+
     public WheelCollider wheelfl;
+    public WheelCollider wheelfr;
+    public WheelCollider wheelrr;
+    public WheelCollider wheelrl;
 
     private List<Transform> nodes;
     private int current = 0;
 	// Use this for initialization
 	void Start () {
+        GetComponent<Rigidbody>().centerOfMass = centerOfMass;
         Transform[] pathTransforms = path.GetComponentsInChildren<Transform>();
         nodes = new List<Transform>();
 
@@ -33,10 +41,8 @@ public class CarAI : MonoBehaviour {
     {
         Vector3 relative = this.transform.InverseTransformPoint(nodes[0].position);
         float steer = relative.x / relative.magnitude;
-        if (Random.Range(0, 1) <= steer)
-            InputSimulator.SimulateKeyPress(VirtualKeyCode.RIGHT);
-        else if (Random.Range(-1, 0) >= steer)
-            InputSimulator.SimulateKeyPress(VirtualKeyCode.LEFT);
+        wheelfl.steerAngle = steer;
+        wheelfr.steerAngle = steer;
         Debug.DrawLine(this.transform.position, nodes[current].position);
     }
 
@@ -45,11 +51,13 @@ public class CarAI : MonoBehaviour {
         currentSpeed = 2 * Mathf.PI * wheelfl.radius * wheelfl.rpm * 60 / 1000;
         if (currentSpeed < maxSpeed)
         {
-            InputSimulator.SimulateKeyPress(VirtualKeyCode.UP);
+            wheelrl.motorTorque = maxMotorTorque;
+            wheelrr.motorTorque = maxMotorTorque;
         }
         else
         {
-            InputSimulator.SimulateKeyPress(VirtualKeyCode.DOWN);
+            wheelrl.motorTorque = 0;
+            wheelrr.motorTorque = 0;
         }
     }
 
