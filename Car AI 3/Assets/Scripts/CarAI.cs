@@ -7,7 +7,7 @@ public class CarAI : MonoBehaviour {
 
     public Transform path;
     public float currentSpeed = 0f;
-    public float maxSpeed = 10f;
+    public float maxSpeed = 1f;
     public WheelCollider wheelfl;
 
     private List<Transform> nodes;
