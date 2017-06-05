@@ -6,6 +6,10 @@ public class CarAI : MonoBehaviour {
 
     public Transform path;
     public float maxSteerAngle = 35f;
+    public float currentSpeed = 0f;
+    public float maxSpeed = 150f;
+    public float maxMotorTorque = 300f;
+    public float maxBrakeTorque = 400f;
 
     [Header("Wheel Colliders")]
     public WheelCollider wheelfl;
@@ -28,6 +32,8 @@ public class CarAI : MonoBehaviour {
 	// Update is called once per frame
 	private void FixedUpdate () {
         Steer();
+        Drive();
+        Next();
 	}
 
     private void Steer()
@@ -36,5 +42,35 @@ public class CarAI : MonoBehaviour {
         float steer = relative.x / relative.magnitude * maxSteerAngle;
         wheelfl.steerAngle = steer;
         wheelfr.steerAngle = steer;
+    }
+
+    private void Drive()
+    {
+        currentSpeed = 2 * Mathf.PI * wheelfl.radius * wheelfl.rpm * 60 / 1000;
+        if (currentSpeed < maxSpeed)
+        {
+            wheelrl.motorTorque = maxMotorTorque;
+            wheelrr.motorTorque = maxMotorTorque;
+        }
+        else
+        {
+            wheelrr.motorTorque = 0;
+            wheelrl.motorTorque = 0;
+        }
+    }
+
+    private void Next()
+    {
+        if (Vector3.Distance(this.transform.position, nodes[current].position) < 3f)
+        {
+            if (current == nodes.Count - 1)
+            {
+                current = 0;
+            }
+            else
+            {
+                current++;
+            }
+        }
     }
 }
