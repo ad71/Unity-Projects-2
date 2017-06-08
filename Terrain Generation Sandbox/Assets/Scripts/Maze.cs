@@ -22,12 +22,12 @@ public class Maze : MonoBehaviour {
         xRes = tData.heightmapWidth;
         yRes = tData.heightmapHeight;
 
-        for(int x = 0; x <= 50; ++x)
+        for(int x = 0; x <= 100; ++x)
         {
-            for(int z = 1; z <= 50; ++z)
+            for(int z = 1; z <= 100; ++z)
             {
                 if(Random.Range(0, 100) < 30)
-                Instantiate(V, new Vector3(x*4 + 1, 0, z*4 + 1), Quaternion.identity);
+                Instantiate(V, new Vector3(x*2 + 1, 0, z*2 + 1), Quaternion.identity);
             }
         }
     }
