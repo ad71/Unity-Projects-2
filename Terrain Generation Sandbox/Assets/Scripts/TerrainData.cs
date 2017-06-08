@@ -6,7 +6,7 @@ public class TerrainData : MonoBehaviour {
 
     Terrain terrain;
     UnityEngine.TerrainData tData;
-    public Rigidbody cylinder;
+    public GameObject cylinder;
 
     int xRes;
     int yRes;
@@ -19,6 +19,8 @@ public class TerrainData : MonoBehaviour {
 
         xRes = tData.heightmapWidth;
         yRes = tData.heightmapHeight;
+
+        Instantiate(cylinder, new Vector3(1, 0, 1), Quaternion.identity);
 	}
 
     private void OnGUI()
@@ -36,8 +38,8 @@ public class TerrainData : MonoBehaviour {
         for (int y = 0; y < yRes; ++y)
             for (int x = 0; x < xRes; ++x)
             {
-                if(x % 10 == 0)
-                    Instantiate(cylinder, new Vector3(x, y, 0), Quaternion.identity);
+                //if(x % 100 == 0)
+                  //  Instantiate(cylinder, new Vector3(x, y, 0), Quaternion.identity);
                     //heights[x, y] = strength;
                 heights[x, y] = 0;
             }
