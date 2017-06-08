@@ -6,6 +6,7 @@ public class TerrainData : MonoBehaviour {
 
     Terrain terrain;
     UnityEngine.TerrainData tData;
+    public Rigidbody cylinder;
 
     int xRes;
     int yRes;
@@ -35,10 +36,10 @@ public class TerrainData : MonoBehaviour {
         for (int y = 0; y < yRes; ++y)
             for (int x = 0; x < xRes; ++x)
             {
-                if (Random.Range(0, 1) < 0.1)
-                    heights[x, y] = strength;
-                else
-                    heights[x, y] = 0;
+                if(x % 10 == 0)
+                    Instantiate(cylinder, new Vector3(x, y, 0), Quaternion.identity);
+                    //heights[x, y] = strength;
+                heights[x, y] = 0;
             }
                 //heights[x, y] = Mathf.PerlinNoise(x * 0.25f * strength, y * 0.25f * strength) * 0.1f;
                 //heights[x, y] = Random.Range(0.0f, strength) * 0.5f;
