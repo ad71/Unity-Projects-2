@@ -34,7 +34,13 @@ public class TerrainData : MonoBehaviour {
         heights = tData.GetHeights(0, 0, xRes, yRes);
         for (int y = 0; y < yRes; ++y)
             for (int x = 0; x < xRes; ++x)
-                heights[x, y] = Mathf.PerlinNoise(x * 0.25f * strength, y * 0.25f * strength) * 0.1f;
+            {
+                if (Random.Range(0, 1) < 0.1)
+                    heights[x, y] = strength;
+                else
+                    heights[x, y] = 0;
+            }
+                //heights[x, y] = Mathf.PerlinNoise(x * 0.25f * strength, y * 0.25f * strength) * 0.1f;
                 //heights[x, y] = Random.Range(0.0f, strength) * 0.5f;
         tData.SetHeights(0, 0, heights);
     }
