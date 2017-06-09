@@ -44,7 +44,19 @@ public class Pathfinder : MonoBehaviour {
             foreach (Node neighbor in grid.GetNeighbors(currentNode))
             {
                 if (!neighbor.walkable || closedSet.Contains(neighbor)) continue;
+                int newMovementCostToNeighbor = currentNode.gCost + GetDistance(currentNode, neighbor);
 
+                if (newMovementCostToNeighbor < neighbor.gCost || !openSet.Contains(neighbor))
+                {
+                    neighbor.gCost = newMovementCostToNeighbor;
+                    neighbor.hCost = GetDistance(neighbor, targetnode);
+                    neighbor.parent = currentNode;
+
+                    if (!openSet.Contains(neighbor))
+                    {
+                        openSet.Add(neighbor);
+                    }
+                }
             }
         }
     }
