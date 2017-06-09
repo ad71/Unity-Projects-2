@@ -10,6 +10,7 @@ public class Grid : MonoBehaviour {
     public LayerMask unwalkableMask;
     public Vector2 gridworldSize;
     public float nodeRadius;
+    public List<Node> path;
     Node[,] grid;
 
     private void OnDrawGizmos()
@@ -20,6 +21,9 @@ public class Grid : MonoBehaviour {
             foreach (Node n in grid)
             {
                 Gizmos.color = (n.walkable) ? Color.white : Color.red;
+                if (path != null)
+                    if (path.Contains(n))
+                        Gizmos.color = Color.black;
                 Gizmos.DrawCube(n.worldposition, Vector3.one * (nodeDiameter - 0.1f));
             }
         }

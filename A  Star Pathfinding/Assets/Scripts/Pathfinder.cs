@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Pathfinder : MonoBehaviour {
 
+    public Transform seeker, target;
     Grid grid;
 
     private void Awake()
@@ -38,6 +39,7 @@ public class Pathfinder : MonoBehaviour {
 
             if (currentNode == targetnode)
             {
+                RetracePath(startnode, targetnode);
                 return;
             }
 
@@ -67,5 +69,23 @@ public class Pathfinder : MonoBehaviour {
         int yDist = Mathf.Abs(a.gridY - b.gridY);
 
         return (xDist > yDist) ? (14 * yDist + 10 * (xDist - yDist)) : (14 * xDist + 10 * (yDist - xDist));
+    }
+
+    private void RetracePath(Node start, Node end)
+    {
+        List<Node> path = new List<Node>();
+        Node currentnode = end;
+        while (currentnode != start)
+        {
+            path.Add(currentnode);
+            currentnode = currentnode.parent;
+        }
+        path.Reverse();
+        grid.path = path;
+    }
+
+    private void Update()
+    {
+        FindPath(seeker.position, target.position);
     }
 }

@@ -10,6 +10,7 @@ public class Node {
     public int hCost;
     public int gridX;
     public int gridY;
+    public Node parent;
 
     public Node(bool _walkable, Vector3 _worldPosition, int _gridX, int _gridY)
     {
