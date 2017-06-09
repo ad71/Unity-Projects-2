@@ -26,7 +26,8 @@ public class Pathfinder : MonoBehaviour {
             Node currentNode = openSet[0];
             for(int i = 1; i < openSet.Count; ++i)
             {
-                // We aer setting the currentNode to the node in the openSet with the lowest fCost.
+                // This is the slowest part of the algorithm
+                // We are setting the currentNode to the node in the openSet with the lowest fCost.
                 // If the fCost is the same, we check the hCost (Heuristic or 'predicted' cost) and set it to the node that is nearer to the end
                 // This is terribly unoptimized
                 if (openSet[i].fCost < currentNode.fCost || openSet[i].fCost == currentNode.fCost && openSet[i].hCost < currentNode.hCost)
