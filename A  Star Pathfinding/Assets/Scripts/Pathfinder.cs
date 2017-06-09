@@ -15,6 +15,9 @@ public class Pathfinder : MonoBehaviour {
 
     private void FindPath(Vector3 startPos, Vector3 targetPos)
     {
+        Stopwatch sw = new Stopwatch();
+        sw.Start();
+
         Node startnode = grid.NodeFromWorldPoint(startPos);
         Node targetnode = grid.NodeFromWorldPoint(targetPos);
         List<Node> openSet = new List<Node>();
@@ -41,6 +44,8 @@ public class Pathfinder : MonoBehaviour {
 
             if (currentNode == targetnode)
             {
+                sw.Stop();
+                print("Path found: " + sw.ElapsedMilliseconds + " ms");
                 RetracePath(startnode, targetnode);
                 return;
             }
@@ -88,6 +93,7 @@ public class Pathfinder : MonoBehaviour {
 
     private void Update()
     {
+        if (Input.GetButtonDown("Jump"))
         FindPath(seeker.position, target.position);
     }
 }

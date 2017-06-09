@@ -7,6 +7,7 @@ public class Grid : MonoBehaviour {
     private float nodeDiameter;
     private int gridSizeX;
     private int gridSizeY;
+    public bool onlyDisplayPathGizmos;
     public LayerMask unwalkableMask;
     public Vector2 gridworldSize;
     public float nodeRadius;
@@ -16,16 +17,37 @@ public class Grid : MonoBehaviour {
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(gridworldSize.x, 1, gridworldSize.y));
-        if (grid != null)
+        if (onlyDisplayPathGizmos)
         {
-            foreach (Node n in grid)
+            if (path != null)
             {
-                Gizmos.color = (n.walkable) ? Color.white : Color.red;
-                if (path != null)
-                    if (path.Contains(n))
-                        Gizmos.color = Color.black;
-                Gizmos.DrawCube(n.worldposition, Vector3.one * (nodeDiameter - 0.1f));
+                foreach (Node n in path)
+                {
+                    Gizmos.color = Color.black;
+                    Gizmos.DrawCube(n.worldposition, Vector3.one * (nodeDiameter - 0.1f));
+                }
             }
+        }
+        else
+        {
+            if (grid != null)
+            {
+                foreach (Node n in grid)
+                {
+                    Gizmos.color = (n.walkable) ? Color.white : Color.red;
+                    if (path != null)
+                        if (path.Contains(n))
+                            Gizmos.color = Color.black;
+                    Gizmos.DrawCube(n.worldposition, Vector3.one * (nodeDiameter - 0.1f));
+                }
+            }
+        }
+    }
+
+    public int MaxSize
+    {
+        get {
+           return gridSizeX * gridSizeY;
         }
     }
 
