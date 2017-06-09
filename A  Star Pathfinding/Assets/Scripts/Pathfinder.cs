@@ -20,26 +20,27 @@ public class Pathfinder : MonoBehaviour {
 
         Node startnode = grid.NodeFromWorldPoint(startPos);
         Node targetnode = grid.NodeFromWorldPoint(targetPos);
-        List<Node> openSet = new List<Node>();
+        Heap<Node> openSet = new Heap<Node>(grid.MaxSize);
         HashSet<Node> closedSet = new HashSet<Node>();
 
         openSet.Add(startnode);
 
         while(openSet.Count > 0)
         {
-            Node currentNode = openSet[0];
-            for(int i = 1; i < openSet.Count; ++i)
-            {
+            Node currentNode = openSet.RemoveFirst();
+            //This was the code before optimizing it using a min heap
+            //for(int i = 1; i < openSet.Count; ++i)
+            //{
                 // This is the slowest part of the algorithm
                 // We are setting the currentNode to the node in the openSet with the lowest fCost.
                 // If the fCost is the same, we check the hCost (Heuristic or 'predicted' cost) and set it to the node that is nearer to the end
                 // This is terribly unoptimized
-                if (openSet[i].fCost < currentNode.fCost || openSet[i].fCost == currentNode.fCost && openSet[i].hCost < currentNode.hCost)
-                {
-                    currentNode = openSet[i];
-                }
-            }
-            openSet.Remove(currentNode);
+                //if (openSet[i].fCost < currentNode.fCost || openSet[i].fCost == currentNode.fCost && openSet[i].hCost < currentNode.hCost)
+                //{
+                //    currentNode = openSet[i];
+              //  }
+            //}
+            //openSet.Remove(currentNode);
             closedSet.Add(currentNode);
 
             if (currentNode == targetnode)
@@ -65,6 +66,7 @@ public class Pathfinder : MonoBehaviour {
                     {
                         openSet.Add(neighbor);
                     }
+                    else openSet.UpdateItem(neighbor);
                 }
             }
         }
