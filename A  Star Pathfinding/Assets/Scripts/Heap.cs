@@ -31,6 +31,26 @@ public class Heap<T> where T : IHeapItem<T> {
         return firstitem;
     }
 
+    // because we might want to update a node when we find a path with a lower fCost
+    public void UpdateItem(T item)
+    {
+        // To update the priority, we will only ever need to increase the priority, never decrease it, so we don't need a sortdown() call
+        SortUp(item);
+    }
+
+    // we define accessors without parentheses
+    public int Count
+    {
+        get {
+            return currentItemCount;
+        }
+    }
+
+    public bool Contains(T item)
+    {
+        return Equals(items[item.heapIndex], item);
+    }
+
     private void SortDown(T item)
     {
         while(true)
