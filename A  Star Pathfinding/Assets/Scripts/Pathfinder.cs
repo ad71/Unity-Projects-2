@@ -41,7 +41,19 @@ public class Pathfinder : MonoBehaviour {
                 return;
             }
 
+            foreach (Node neighbor in grid.GetNeighbors(currentNode))
+            {
+                if (!neighbor.walkable || closedSet.Contains(neighbor)) continue;
 
+            }
         }
+    }
+
+    private int GetDistance(Node a, Node b)
+    {
+        int xDist = Mathf.Abs(a.gridX - b.gridX);
+        int yDist = Mathf.Abs(a.gridY - b.gridY);
+
+        return (xDist > yDist) ? (14 * yDist + 10 * (xDist - yDist)) : (14 * xDist + 10 * (yDist - xDist));
     }
 }
