@@ -60,4 +60,9 @@ public class Grid : MonoBehaviour {
 
         return grid[x, y];
     }
+
+    public List<Node> GetNeighbors(Node node)
+    {
+
+    }
 }
