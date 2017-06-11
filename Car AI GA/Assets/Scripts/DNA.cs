@@ -10,17 +10,19 @@ public class DNA {
      * 3. maxMotorTorque
      * 4. maxBrakingTorque
      * 5. centerOfMass.y
-     * 6. sensorLength
-     * 7. sensorSkewAngle
-     * 8. 4WheelDrive?
-     * 9. 4WheelBrake?
-     * 10. 4WheelTurn?
-     * 11. switchToNextWaypointDistance
-     * 12. sense() ?
-     * 13. brakingConditions
-     * 14. avoidMultiplier parameter
-     * 15. lerpToSteerAngle ?
-     * 16.     turningSpeed
+     * 6. Mass
+     * 7. sensorLength
+     * 8. sensorSkewAngle
+     * 9. 4WheelDrive?
+     * 10. 4WheelBrake?
+     * 11. 4WheelTurn?
+     * 12. switchToNextWaypointDistance
+     * 13. sense() ?
+     * 14. brakingConditions1
+     * 15. brakingConditions2
+     * 16. avoidMultiplier parameter
+     * 17. lerpToSteerAngle ?
+     * 18.     turningSpeed
      */
 
     public List<float> genes;
@@ -28,7 +30,7 @@ public class DNA {
     public DNA()
     {
         this.genes = new List<float>();
-        for(int i = 0; i < 16; ++i)
+        for(int i = 0; i < 18; ++i)
         {
             this.genes.Add(Random.Range(0f, 1f));
         }
