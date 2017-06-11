@@ -84,6 +84,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Camera.cs" />
     <Compile Include="Assets\Scripts\CarEngine.cs" />
     <Compile Include="Assets\Scripts\DNA.cs" />
     <Compile Include="Assets\Scripts\Path.cs" />
