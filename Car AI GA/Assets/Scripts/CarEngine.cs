@@ -7,6 +7,7 @@ public class CarEngine : MonoBehaviour {
     public Transform path;
     public float maxSteerAngle = 40f;
     public float currentSpeed = 0f;
+    public float turningSpeed = 5f;
     public float topSpeed = 100f;
     public float maxMotorTorque = 100f;
     public float maxBrakingTorque = 200f;
@@ -31,6 +32,7 @@ public class CarEngine : MonoBehaviour {
     private List<Transform> nodes;
     private int current = 0;
     private bool avoiding = false;
+    private float targetSteerAngle = 0f;
 
     private void Start()
     {
@@ -50,6 +52,7 @@ public class CarEngine : MonoBehaviour {
         Next();
         Brake();
         Check();
+        Angle();
         // To do: find conditions for braking
     }
 
@@ -58,8 +61,12 @@ public class CarEngine : MonoBehaviour {
         if (avoiding) return;
         Vector3 relative = this.transform.InverseTransformPoint(nodes[current].position);
         float steer = (relative.x / relative.magnitude) * maxSteerAngle;
-        wheelfl.steerAngle = steer;
-        wheelfr.steerAngle = steer;
+        // if(lerpToSteerAngle?)
+        targetSteerAngle = steer;
+
+        // else
+        // wheelfl.steerAngle = steer;
+        // wheelfr.steerAngle = steer;
         // To do: Mutation might let rear wheels turn
     }
 
@@ -185,9 +192,23 @@ public class CarEngine : MonoBehaviour {
 
         if (avoiding)
         {
-            wheelfl.steerAngle = maxSteerAngle * avoidMultiplier;
-            wheelfr.steerAngle = maxSteerAngle * avoidMultiplier;
+            // if(lerpToSteerangle?)
+            targetSteerAngle = maxSteerAngle * avoidMultiplier;
+
+            // else
+            // wheelfl.steerAngle = maxSteerAngle * avoidMultiplier;
+            // wheelfr.steerAngle = maxSteerAngle * avoidMultiplier;
             // To do: Mutation might allow turning of rear wheels
         }
+    }
+
+    private void Angle()
+    {
+        wheelfl.steerAngle = Mathf.Lerp(wheelfl.steerAngle, targetSteerAngle, Time.deltaTime * turningSpeed);
+        wheelfr.steerAngle = Mathf.Lerp(wheelfl.steerAngle, targetSteerAngle, Time.deltaTime * turningSpeed);
+
+        // if rear wheels can turn,
+        // wheelrr.steerAngle = Mathf.Lerp(wheelrr.steerAngle, -targetSteerAngle, Time.deltaTime * turningSpeed);
+        // wheelrl.steerAngle = Mathf.Lerp(wheelrl.steerAngle, -targetSteerAngle, Time.deltaTime * turningSpeed);
     }
 }
