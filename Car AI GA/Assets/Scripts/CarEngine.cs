@@ -4,20 +4,31 @@ using UnityEngine;
 
 public class CarEngine : MonoBehaviour {
 
-    public Transform path;
-    public bool verbose = false;
     public float currentSpeed = 0f;
-    private float maxSteerAngle = 0f;
-    private float turningSpeed = 0f;
-    private float topSpeed = 0f;
-    private float maxMotorTorque = 0f;
-    private float maxBrakingTorque = 0f;
-    private float mass = 0f;
-    private Vector3 centerofMass;
-    public bool isBraking = false;
+    public Transform path;
     public Texture2D normal;
     public Texture2D braking;
     public Renderer carTextureRenderer;
+    public bool isBraking = false;
+    public bool verbose = false;
+    private Vector3 centerofMass;
+    private float maxSteerAngle = 0f;
+    private float topSpeed = 0f;
+    private float maxMotorTorque = 0f;
+    private float maxBrakingTorque = 0f;   
+    private float mass = 0f;
+    private float sensorLength = 0f;
+    private float sensorSkewAngle = 0f;
+    private float switchToNextwaypointDistance = 0f;
+    private float brakeTopSpeedMultiplier;
+    private float brakeSteerMultiplier;
+    private float avoidMultiplierMultiplier;
+    private float turningSpeed = 0f;
+    private bool fourWheelDrive;
+    private bool fourWheelBrake;
+    private bool fourWheelTurn;
+    private bool doesnotGiveAFuck;
+    private bool doesItLerp;
 
     [Header("Colliders")]
     public WheelCollider wheelfr;
@@ -26,19 +37,8 @@ public class CarEngine : MonoBehaviour {
     public WheelCollider wheelrl;
 
     [Header("Sensors")]
-    private float sensorLength = 0f;
     public Vector3 sensorPosition = new Vector3(0, 0.2f, 0.5f);
     public float sideSensorOffset = 0.2f;
-    private float sensorSkewAngle = 0f;
-    private bool fourWheelDrive;
-    private bool fourWheelBrake;
-    private bool fourWheelTurn;
-    private bool doesnotGiveAFuck;
-    private bool doesItLerp;
-    private float switchToNextwaypointDistance = 0f;
-    private float brakeTopSpeedMultiplier;
-    private float brakeSteerMultiplier;
-    private float avoidMultiplierMultiplier;
 
     private List<Transform> nodes;
     private int current = 0;
