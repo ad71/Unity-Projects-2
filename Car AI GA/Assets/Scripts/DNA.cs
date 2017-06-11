@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DNA : MonoBehaviour {
+public class DNA {
 
     /* Parameters:
      * 1. maxSteerAngle
@@ -23,7 +23,7 @@ public class DNA : MonoBehaviour {
      * 16.     turningSpeed
      */
 
-    List<float> genes;
+    public List<float> genes;
 
     public DNA()
     {

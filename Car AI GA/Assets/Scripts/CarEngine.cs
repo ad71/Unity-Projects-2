@@ -5,13 +5,14 @@ using UnityEngine;
 public class CarEngine : MonoBehaviour {
 
     public Transform path;
-    public float maxSteerAngle = 40f;
+    public bool verbose = false;
+    private float maxSteerAngle = 0f;
     public float currentSpeed = 0f;
     public float turningSpeed = 5f;
-    public float topSpeed = 100f;
-    public float maxMotorTorque = 100f;
-    public float maxBrakingTorque = 200f;
-    public Vector3 centerofMass;
+    private float topSpeed = 0f;
+    private float maxMotorTorque = 0f;
+    private float maxBrakingTorque = 0f;
+    private Vector3 centerofMass;
     public bool isBraking = false;
     public Texture2D normal;
     public Texture2D braking;
@@ -33,15 +34,35 @@ public class CarEngine : MonoBehaviour {
     private int current = 0;
     private bool avoiding = false;
     private float targetSteerAngle = 0f;
+    private DNA dna;
+
+    private void Init(DNA dna)
+    {
+        maxSteerAngle = Mathf.Lerp(20f, 50f, dna.genes[0]);
+        topSpeed = Mathf.Lerp(50f, 150f, dna.genes[1]);
+        maxMotorTorque = Mathf.Lerp(50f, 200f, dna.genes[2]);
+        maxBrakingTorque = Mathf.Lerp(50f, 400f, dna.genes[3]);
+        centerofMass = new Vector3(0, Mathf.Lerp(-0.3f, 0.3f, dna.genes[4]));
+        if (verbose)
+        {
+            Debug.Log("Max Steer Angle: " + maxSteerAngle);
+            Debug.Log("Top Speed: " + topSpeed);
+            Debug.Log("Max Motor Torque: " + maxMotorTorque);
+            Debug.Log("Max Braking Torque: " + maxBrakingTorque);
+            Debug.Log("Center of mass: (" + centerofMass.x + ", " + centerofMass.y + ", " + centerofMass.z + ")");
+        }
+    }
 
     private void Start()
     {
-        GetComponent<Rigidbody>().centerOfMass = centerofMass;
         Transform[] pathTransforms = path.GetComponentsInChildren<Transform>();
         nodes = new List<Transform>();
         for (int i = 0; i < pathTransforms.Length; ++i)
             if (pathTransforms[i] != path.transform)
                 nodes.Add(pathTransforms[i]);
+        dna = new DNA();
+        Init(dna);
+        GetComponent<Rigidbody>().centerOfMass = centerofMass;
     }
 
     private void FixedUpdate()
