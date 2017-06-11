@@ -45,7 +45,6 @@ public class CarEngine : MonoBehaviour {
     private Stopwatch sw;
     private int current = 0;
     private bool avoiding = false;
-    private bool recordedTime = false;
     private float targetSteerAngle = 0f;
     private DNA dna;
 
@@ -111,15 +110,13 @@ public class CarEngine : MonoBehaviour {
 
     private void Update()
     {
-        if (current >= nodes.Count - 1 && !recordedTime)
+        if (Vector3.Distance(this.transform.position, nodes[nodes.Count - 1].position) < switchToNextwaypointDistance)
         {
             sw.Stop();
             UnityEngine.Debug.Log("Time taken: " + sw.ElapsedMilliseconds + " ms");
             sw = new Stopwatch();
             sw.Start();
-            recordedTime = true;
         }
-        else recordedTime = false;
     }
 
     private void FixedUpdate()
@@ -217,8 +214,8 @@ public class CarEngine : MonoBehaviour {
             wheelrl.brakeTorque = 0;
             if (fourWheelBrake)
             {
-                wheelfl.brakeTorque = maxBrakingTorque;
-                wheelfr.brakeTorque = maxBrakingTorque;
+                wheelfl.brakeTorque = 0;
+                wheelfr.brakeTorque = 0;
             }
         }
     }
