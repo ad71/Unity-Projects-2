@@ -22,8 +22,15 @@ public class CarEngine : MonoBehaviour {
     public WheelCollider wheelrr;
     public WheelCollider wheelrl;
 
+    [Header("Sensors")]
+    public float sensorLength = 3f;
+    public Vector3 sensorPosition = new Vector3(0, 0.2f, 0.5f);
+    public float sideSensorOffset = 0.2f;
+    public float sensorSkewAngle = 30f;
+
     private List<Transform> nodes;
     private int current = 0;
+    private bool avoiding = false;
 
     private void Start()
     {
@@ -37,6 +44,7 @@ public class CarEngine : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        Sense();
         Steer();
         Drive();
         Next();
@@ -91,6 +99,27 @@ public class CarEngine : MonoBehaviour {
             carTextureRenderer.material.mainTexture = normal;
             wheelrr.brakeTorque = 0;
             wheelrl.brakeTorque = 0;
+        }
+    }
+
+    private void Sense()
+    {
+        RaycastHit hit;
+        Vector3 origin = this.transform.position;
+        origin += this.transform.forward * sensorPosition.z;
+        origin += this.transform.up * sensorPosition.y;
+        float avoidMultiplier = 0f;
+
+        // Front right sensor
+        origin += transform.right * sideSensorOffset;
+        if (Physics.Raycast(origin, this.transform.forward, out hit, sensorLength))
+        {
+            if (!hit.collider.CompareTag("Terrain"))
+            {
+                Debug.DrawLine(origin, hit.point);
+                avoiding = true;
+                avoidMultiplier -= 1f;
+            }
         }
     }
 }
