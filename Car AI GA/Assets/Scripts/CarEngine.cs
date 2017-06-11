@@ -37,9 +37,9 @@ public class CarEngine : MonoBehaviour {
     private void Steer()
     {
         Vector3 relative = this.transform.InverseTransformPoint(nodes[0].position);
-        // float steer = (relative.x / relative.magnitude) * maxSteerAngle;
-        // wheelfl.steerAngle = steer;
-        // wheelfr.steerAngle = steer;
+        float steer = (relative.x / relative.magnitude) * maxSteerAngle;
+        wheelfl.steerAngle = steer;
+        wheelfr.steerAngle = steer;
         // To do: Mutation might let rear wheels turn
     }
 }
