@@ -49,6 +49,7 @@ public class CarEngine : MonoBehaviour {
         Drive();
         Next();
         Brake();
+        Check();
         // To do: find conditions for braking
     }
 
@@ -65,7 +66,7 @@ public class CarEngine : MonoBehaviour {
     private void Drive()
     {
         currentSpeed = 2 * Mathf.PI * wheelfl.radius * wheelfl.rpm * 60 / 1000;
-        if (currentSpeed < topSpeed)
+        if (currentSpeed < topSpeed && !isBraking)
         {
             wheelfl.motorTorque = maxMotorTorque;
             wheelfr.motorTorque = maxMotorTorque;
@@ -102,6 +103,13 @@ public class CarEngine : MonoBehaviour {
             wheelrr.brakeTorque = 0;
             wheelrl.brakeTorque = 0;
         }
+    }
+
+    private void Check()
+    {
+        // To check braking conditions
+        if (currentSpeed > 0.2 * topSpeed && wheelfl.steerAngle > 0.2 * maxSteerAngle) isBraking = true;
+        else isBraking = false;
     }
 
     private void Sense()
