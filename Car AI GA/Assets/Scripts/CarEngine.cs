@@ -54,6 +54,7 @@ public class CarEngine : MonoBehaviour {
 
     private void Steer()
     {
+        if (avoiding) return;
         Vector3 relative = this.transform.InverseTransformPoint(nodes[current].position);
         float steer = (relative.x / relative.magnitude) * maxSteerAngle;
         wheelfl.steerAngle = steer;
@@ -110,6 +111,7 @@ public class CarEngine : MonoBehaviour {
         origin += this.transform.forward * sensorPosition.z;
         origin += this.transform.up * sensorPosition.y;
         float avoidMultiplier = 0f;
+        avoiding = false;
 
         // Front right sensor
         origin += transform.right * sideSensorOffset;
