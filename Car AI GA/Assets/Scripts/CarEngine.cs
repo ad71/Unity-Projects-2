@@ -106,13 +106,19 @@ public class CarEngine : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        Sense();
+        if (doesnotGiveAFuck)
+        {
+            Sense();
+        }
         Steer();
         Drive();
         Next();
         Brake();
         Check();
-        Angle();
+        if (doesItLerp)
+        {
+            Angle();
+        }
     }
 
     private void Steer()
@@ -121,12 +127,20 @@ public class CarEngine : MonoBehaviour {
         Vector3 relative = this.transform.InverseTransformPoint(nodes[current].position);
         float steer = (relative.x / relative.magnitude) * maxSteerAngle;
         // if(lerpToSteerAngle?)
-        targetSteerAngle = steer;
-
-        // else
-        // wheelfl.steerAngle = steer;
-        // wheelfr.steerAngle = steer;
-        // To do: Mutation might let rear wheels turn
+        if (doesItLerp)
+        {
+            targetSteerAngle = steer;
+        }
+        else
+        {
+            wheelfl.steerAngle = steer;
+            wheelfr.steerAngle = steer;
+            if (fourWheelTurn)
+            {
+                wheelrl.steerAngle = -steer;
+                wheelrr.steerAngle = -steer;
+            }
+        }
     }
 
     private void Drive()
@@ -134,20 +148,30 @@ public class CarEngine : MonoBehaviour {
         currentSpeed = 2 * Mathf.PI * wheelfl.radius * wheelfl.rpm * 60 / 1000;
         if (currentSpeed < topSpeed && !isBraking)
         {
-            wheelfl.motorTorque = maxMotorTorque;
-            wheelfr.motorTorque = maxMotorTorque;
+            wheelrl.motorTorque = maxMotorTorque;
+            wheelrr.motorTorque = maxMotorTorque;
             // to do: Mutation might make it 4x4
+            if (fourWheelDrive)
+            {
+                wheelfr.motorTorque = maxMotorTorque;
+                wheelfl.motorTorque = maxMotorTorque;
+            }
         }
         else
         {
-            wheelfr.motorTorque = 0;
-            wheelfl.motorTorque = 0;
+            wheelrr.motorTorque = 0;
+            wheelrl.motorTorque = 0;
+            if (fourWheelDrive)
+            {
+                wheelfr.motorTorque = 0;
+                wheelfl.motorTorque = 0;
+            }
         }
     }
 
     private void Next()
     {
-        if (Vector3.Distance(this.transform.position, nodes[current].position) < 3f)
+        if (Vector3.Distance(this.transform.position, nodes[current].position) < switchToNextwaypointDistance)
         {
             if (current == nodes.Count - 1) current = 0;
             else current++;
@@ -162,19 +186,29 @@ public class CarEngine : MonoBehaviour {
             carTextureRenderer.material.mainTexture = braking;
             wheelrl.brakeTorque = maxBrakingTorque;
             wheelrr.brakeTorque = maxBrakingTorque;
+            if (fourWheelBrake)
+            {
+                wheelfl.brakeTorque = maxBrakingTorque;
+                wheelfr.brakeTorque = maxBrakingTorque;
+            }
         }
         else
         {
             carTextureRenderer.material.mainTexture = normal;
             wheelrr.brakeTorque = 0;
             wheelrl.brakeTorque = 0;
+            if (fourWheelBrake)
+            {
+                wheelfl.brakeTorque = maxBrakingTorque;
+                wheelfr.brakeTorque = maxBrakingTorque;
+            }
         }
     }
 
     private void Check()
     {
         // To check braking conditions
-        if (currentSpeed > 0.2 * topSpeed && wheelfl.steerAngle > 0.2 * maxSteerAngle) isBraking = true;
+        if (currentSpeed > brakeTopSpeedMultiplier * topSpeed && wheelfl.steerAngle > brakeSteerMultiplier * maxSteerAngle) isBraking = true;
         else isBraking = false;
     }
 
@@ -195,7 +229,7 @@ public class CarEngine : MonoBehaviour {
             {
                 Debug.DrawLine(origin, hit.point);
                 avoiding = true;
-                avoidMultiplier -= 1f;
+                avoidMultiplier -= avoidMultiplierMultiplier;
             }
         }
 
@@ -207,7 +241,7 @@ public class CarEngine : MonoBehaviour {
             {
                 Debug.DrawLine(origin, hit.point);
                 avoiding = true;
-                avoidMultiplier -= 0.5f;
+                avoidMultiplier -= 0.5f * avoidMultiplierMultiplier;
             }
         }
 
@@ -219,7 +253,7 @@ public class CarEngine : MonoBehaviour {
             {
                 Debug.DrawLine(origin, hit.point);
                 avoiding = true;
-                avoidMultiplier += 1f;
+                avoidMultiplier += avoidMultiplierMultiplier;
             }
         }
 
@@ -231,7 +265,7 @@ public class CarEngine : MonoBehaviour {
             {
                 Debug.DrawLine(origin, hit.point);
                 avoiding = true;
-                avoidMultiplier += 0.5f;
+                avoidMultiplier += 0.5f * avoidMultiplierMultiplier;
             }
         }
 
@@ -243,8 +277,8 @@ public class CarEngine : MonoBehaviour {
                 {
                     Debug.DrawLine(origin, hit.point);
                     avoiding = true;
-                    if (hit.normal.x < 0) avoidMultiplier = -1;
-                    else avoidMultiplier = 1;
+                    if (hit.normal.x < 0) avoidMultiplier = -avoidMultiplierMultiplier;
+                    else avoidMultiplier = avoidMultiplierMultiplier;
                 }
             }
         }
@@ -252,11 +286,19 @@ public class CarEngine : MonoBehaviour {
         if (avoiding)
         {
             // if(lerpToSteerangle?)
-            targetSteerAngle = maxSteerAngle * avoidMultiplier;
+            if (doesItLerp)
+                targetSteerAngle = maxSteerAngle * avoidMultiplier;
 
-            // else
-            // wheelfl.steerAngle = maxSteerAngle * avoidMultiplier;
-            // wheelfr.steerAngle = maxSteerAngle * avoidMultiplier;
+            else
+            {
+                wheelfl.steerAngle = maxSteerAngle * avoidMultiplier;
+                wheelfr.steerAngle = maxSteerAngle * avoidMultiplier;
+                if (fourWheelTurn)
+                {
+                    wheelrr.steerAngle = -maxSteerAngle * avoidMultiplier;
+                    wheelrl.steerAngle = -maxSteerAngle * avoidMultiplier;
+                }
+            }
             // To do: Mutation might allow turning of rear wheels
         }
     }
@@ -267,7 +309,10 @@ public class CarEngine : MonoBehaviour {
         wheelfr.steerAngle = Mathf.Lerp(wheelfl.steerAngle, targetSteerAngle, Time.deltaTime * turningSpeed);
 
         // if rear wheels can turn,
-        // wheelrr.steerAngle = Mathf.Lerp(wheelrr.steerAngle, -targetSteerAngle, Time.deltaTime * turningSpeed);
-        // wheelrl.steerAngle = Mathf.Lerp(wheelrl.steerAngle, -targetSteerAngle, Time.deltaTime * turningSpeed);
+        if (fourWheelTurn)
+        {
+            wheelrr.steerAngle = Mathf.Lerp(wheelrr.steerAngle, -targetSteerAngle, Time.deltaTime * turningSpeed);
+            wheelrl.steerAngle = Mathf.Lerp(wheelrl.steerAngle, -targetSteerAngle, Time.deltaTime * turningSpeed);
+        }
     }
 }
