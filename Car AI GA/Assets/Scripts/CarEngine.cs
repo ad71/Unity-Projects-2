@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Diagnostics;
 
 public class CarEngine : MonoBehaviour {
 
@@ -41,8 +42,10 @@ public class CarEngine : MonoBehaviour {
     public float sideSensorOffset = 0.2f;
 
     private List<Transform> nodes;
+    private Stopwatch sw;
     private int current = 0;
     private bool avoiding = false;
+    private bool recordedTime = false;
     private float targetSteerAngle = 0f;
     private DNA dna;
 
@@ -70,24 +73,24 @@ public class CarEngine : MonoBehaviour {
 
         if (verbose)
         {
-            Debug.Log("Max Steer Angle: " + maxSteerAngle);
-            Debug.Log("Top Speed: " + topSpeed);
-            Debug.Log("Max Motor Torque: " + maxMotorTorque);
-            Debug.Log("Max Braking Torque: " + maxBrakingTorque);
-            Debug.Log("Center of mass: (" + centerofMass.x + ", " + centerofMass.y + ", " + centerofMass.z + ")");
-            Debug.Log("Mass: " + mass + "kg");
-            Debug.Log("Sensor length: " + sensorLength);
-            Debug.Log("Sensor skew angle: " + sensorSkewAngle);
-            Debug.Log("4 Wheel drive: " + fourWheelDrive);
-            Debug.Log("4 Wheel brake: " + fourWheelBrake);
-            Debug.Log("4 Wheel turn: " + fourWheelTurn);
-            Debug.Log("Switch to next waypoint distance: " + switchToNextwaypointDistance);
-            Debug.Log("Rowdy: " + doesnotGiveAFuck);
-            Debug.Log("Brake top speed multiplier: " + brakeTopSpeedMultiplier);
-            Debug.Log("Brake steer multiplier: " + brakeSteerMultiplier);
-            Debug.Log("Avoid multiplier magnitude: " + avoidMultiplierMultiplier);
-            Debug.Log("Smooth turning: " + doesItLerp);
-            Debug.Log("Turning speed: " + turningSpeed);
+            UnityEngine.Debug.Log("Max Steer Angle: " + maxSteerAngle);
+            UnityEngine.Debug.Log("Top Speed: " + topSpeed);
+            UnityEngine.Debug.Log("Max Motor Torque: " + maxMotorTorque);
+            UnityEngine.Debug.Log("Max Braking Torque: " + maxBrakingTorque);
+            UnityEngine.Debug.Log("Center of mass: (" + centerofMass.x + ", " + centerofMass.y + ", " + centerofMass.z + ")");
+            UnityEngine.Debug.Log("Mass: " + mass + "kg");
+            UnityEngine.Debug.Log("Sensor length: " + sensorLength);
+            UnityEngine.Debug.Log("Sensor skew angle: " + sensorSkewAngle);
+            UnityEngine.Debug.Log("4 Wheel drive: " + fourWheelDrive);
+            UnityEngine.Debug.Log("4 Wheel brake: " + fourWheelBrake);
+            UnityEngine.Debug.Log("4 Wheel turn: " + fourWheelTurn);
+            UnityEngine.Debug.Log("Switch to next waypoint distance: " + switchToNextwaypointDistance);
+            UnityEngine.Debug.Log("Rowdy: " + doesnotGiveAFuck);
+            UnityEngine.Debug.Log("Brake top speed multiplier: " + brakeTopSpeedMultiplier);
+            UnityEngine.Debug.Log("Brake steer multiplier: " + brakeSteerMultiplier);
+            UnityEngine.Debug.Log("Avoid multiplier magnitude: " + avoidMultiplierMultiplier);
+            UnityEngine.Debug.Log("Smooth turning: " + doesItLerp);
+            UnityEngine.Debug.Log("Turning speed: " + turningSpeed);
         }
     }
 
@@ -102,6 +105,21 @@ public class CarEngine : MonoBehaviour {
         Init(dna);
         GetComponent<Rigidbody>().centerOfMass = centerofMass;
         GetComponent<Rigidbody>().mass = mass;
+        sw = new Stopwatch();
+        sw.Start();
+    }
+
+    private void Update()
+    {
+        if (current >= nodes.Count - 1 && !recordedTime)
+        {
+            sw.Stop();
+            UnityEngine.Debug.Log("Time taken: " + sw.ElapsedMilliseconds + " ms");
+            sw = new Stopwatch();
+            sw.Start();
+            recordedTime = true;
+        }
+        else recordedTime = false;
     }
 
     private void FixedUpdate()
@@ -227,7 +245,7 @@ public class CarEngine : MonoBehaviour {
         {
             if (!hit.collider.CompareTag("Terrain"))
             {
-                Debug.DrawLine(origin, hit.point);
+                UnityEngine.Debug.DrawLine(origin, hit.point);
                 avoiding = true;
                 avoidMultiplier -= avoidMultiplierMultiplier;
             }
@@ -239,7 +257,7 @@ public class CarEngine : MonoBehaviour {
         {
             if (!hit.collider.CompareTag("Terrain"))
             {
-                Debug.DrawLine(origin, hit.point);
+                UnityEngine.Debug.DrawLine(origin, hit.point);
                 avoiding = true;
                 avoidMultiplier -= 0.5f * avoidMultiplierMultiplier;
             }
@@ -251,7 +269,7 @@ public class CarEngine : MonoBehaviour {
         {
             if (!hit.collider.CompareTag("Terrain"))
             {
-                Debug.DrawLine(origin, hit.point);
+                UnityEngine.Debug.DrawLine(origin, hit.point);
                 avoiding = true;
                 avoidMultiplier += avoidMultiplierMultiplier;
             }
@@ -263,7 +281,7 @@ public class CarEngine : MonoBehaviour {
         {
             if (!hit.collider.CompareTag("Terrain"))
             {
-                Debug.DrawLine(origin, hit.point);
+                UnityEngine.Debug.DrawLine(origin, hit.point);
                 avoiding = true;
                 avoidMultiplier += 0.5f * avoidMultiplierMultiplier;
             }
@@ -275,7 +293,7 @@ public class CarEngine : MonoBehaviour {
             {
                 if (!hit.collider.CompareTag("Terrain"))
                 {
-                    Debug.DrawLine(origin, hit.point);
+                    UnityEngine.Debug.DrawLine(origin, hit.point);
                     avoiding = true;
                     if (hit.normal.x < 0) avoidMultiplier = -avoidMultiplierMultiplier;
                     else avoidMultiplier = avoidMultiplierMultiplier;
