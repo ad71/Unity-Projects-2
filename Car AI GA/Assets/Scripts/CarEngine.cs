@@ -49,6 +49,7 @@ public class CarEngine : MonoBehaviour {
         Drive();
         Next();
         Brake();
+        // To do: find conditions for braking
     }
 
     private void Steer()
@@ -120,6 +121,63 @@ public class CarEngine : MonoBehaviour {
                 avoiding = true;
                 avoidMultiplier -= 1f;
             }
+        }
+
+        // Front right skew sensor
+        // Quaternion.AngleAxis turns right by sensorSkewAngle about the transform.up axis relative to the car
+        else if (Physics.Raycast(origin, Quaternion.AngleAxis(sensorSkewAngle, this.transform.up) * transform.forward, out hit, sensorLength))
+        {
+            if (!hit.collider.CompareTag("Terrain"))
+            {
+                Debug.DrawLine(origin, hit.point);
+                avoiding = true;
+                avoidMultiplier -= 0.5f;
+            }
+        }
+
+        //Front left sensor
+        origin -= 2 * transform.right * sideSensorOffset;
+        if (Physics.Raycast(origin, this.transform.forward, out hit, sensorLength))
+        {
+            if (!hit.collider.CompareTag("Terrain"))
+            {
+                Debug.DrawLine(origin, hit.point);
+                avoiding = true;
+                avoidMultiplier += 1f;
+            }
+        }
+
+        // Front right sensor
+        // Quaternion.AngleAxis turns left by sensorSkewAngle about the transform.up axis relative to the car
+        else if (Physics.Raycast(origin, Quaternion.AngleAxis(-sensorSkewAngle, this.transform.up) * transform.forward, out hit, sensorLength))
+        {
+            if (!hit.collider.CompareTag("Terrain"))
+            {
+                Debug.DrawLine(origin, hit.point);
+                avoiding = true;
+                avoidMultiplier += 0.5f;
+            }
+        }
+
+        if (avoidMultiplier == 0)
+        {
+            if (Physics.Raycast(origin, this.transform.forward, out hit, sensorLength))
+            {
+                if (!hit.collider.CompareTag("Terrain"))
+                {
+                    Debug.DrawLine(origin, hit.point);
+                    avoiding = true;
+                    if (hit.normal.x < 0) avoidMultiplier = -1;
+                    else avoidMultiplier = 1;
+                }
+            }
+        }
+
+        if (avoiding)
+        {
+            wheelfl.steerAngle = maxSteerAngle * avoidMultiplier;
+            wheelfr.steerAngle = maxSteerAngle * avoidMultiplier;
+            // To do: Mutation might allow turning of rear wheels
         }
     }
 }
