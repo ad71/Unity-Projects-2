@@ -11,6 +11,10 @@ public class CarEngine : MonoBehaviour {
     public float maxMotorTorque = 100f;
     public float maxBrakingTorque = 200f;
     public Vector3 centerofMass;
+    public bool isBraking = false;
+    public Texture2D normal;
+    public Texture2D braking;
+    public Renderer carTextureRenderer;
 
     [Header("Colliders")]
     public WheelCollider wheelfr;
@@ -36,6 +40,7 @@ public class CarEngine : MonoBehaviour {
         Steer();
         Drive();
         Next();
+        Brake();
     }
 
     private void Steer()
@@ -69,6 +74,23 @@ public class CarEngine : MonoBehaviour {
         {
             if (current == nodes.Count - 1) current = 0;
             else current++;
+        }
+    }
+
+    private void Brake()
+    {
+        // to do: Mutation might apply brakes on all four wheels
+        if (isBraking)
+        {
+            carTextureRenderer.material.mainTexture = braking;
+            wheelrl.brakeTorque = maxBrakingTorque;
+            wheelrr.brakeTorque = maxBrakingTorque;
+        }
+        else
+        {
+            carTextureRenderer.material.mainTexture = normal;
+            wheelrr.brakeTorque = 0;
+            wheelrl.brakeTorque = 0;
         }
     }
 }
