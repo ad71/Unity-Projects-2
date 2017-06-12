@@ -18,6 +18,7 @@ public class Population : MonoBehaviour {
     // private GameObject thisCar;
     private int index = 0;
     private bool timed = false;
+    public static float tempWeakness;
     /* public static List<GameObject> cars = new List<GameObject>();
     public static int numSpawned = 0;
 
@@ -56,17 +57,22 @@ public class Population : MonoBehaviour {
         // GetComponent<Camera>().car = thisCar.transform;
         // index++
         // Destroy condition?
+        if (index == 0) Run(true, false);
     }
 
-    private void Run()
+    private void Run(bool instantiate, bool check_fitness)
     {
         GameObject thisCar;
         CarEngine thisEngine;
-        thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
-        thisEngine = thisCar.GetComponent<CarEngine>();
-        thisEngine.setDna(geneticData[index]);
-        thisEngine.path = path;
-        thisEngine.verbose = verbose;
-        GetComponent<Camera>().car = thisCar.transform;
+        if (instantiate)
+        {
+            thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
+            thisEngine = thisCar.GetComponent<CarEngine>();
+            thisEngine.setDna(geneticData[index]);
+            thisEngine.path = path;
+            thisEngine.verbose = verbose;
+            GetComponent<Camera>().car = thisCar.transform;
+            index++;
+        }
     }
 }

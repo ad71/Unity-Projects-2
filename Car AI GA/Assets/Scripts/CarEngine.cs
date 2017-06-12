@@ -118,6 +118,7 @@ public class CarEngine : MonoBehaviour {
             UnityEngine.Debug.Log("Time taken: " + sw.ElapsedMilliseconds + " ms");
             timeRecorded = true;
             weakness = sw.ElapsedMilliseconds;
+            Population.tempWeakness = weakness;
             // sw = new Stopwatch();
             // sw.Start();
         }
