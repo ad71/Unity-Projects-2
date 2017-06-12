@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Population : MonoBehaviour {
 
-    private int populationSize = 3;
+    private int populationSize = 10;
     public int generation = 1;
     public Transform path;
     public GameObject car;
@@ -58,6 +58,7 @@ public class Population : MonoBehaviour {
 
     private void Update()
     {
+        if (cars[index].GetComponent<CarEngine>().sw.ElapsedMilliseconds == 0) cars[index].GetComponent<CarEngine>().sw.Start();
         cars[index].SetActive(true);
     }
 }

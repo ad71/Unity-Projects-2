@@ -44,7 +44,7 @@ public class CarEngine : MonoBehaviour {
     public float sideSensorOffset = 0.2f;
 
     private List<Transform> nodes;
-    private Stopwatch sw;
+    public Stopwatch sw;
     private int current = 0;
     private bool avoiding = false;
     private float targetSteerAngle = 0f;
@@ -108,7 +108,7 @@ public class CarEngine : MonoBehaviour {
         GetComponent<Rigidbody>().centerOfMass = centerofMass;
         GetComponent<Rigidbody>().mass = mass;
         sw = new Stopwatch();
-        sw.Start();
+        // sw.Start();
         UnityEngine.Debug.Log("Time: " + sw.ElapsedMilliseconds);
         gameObject.SetActive(false);
     }
