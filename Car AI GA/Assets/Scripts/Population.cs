@@ -48,7 +48,7 @@ public class Population : MonoBehaviour {
     {
         GameObject thisCar;
         CarEngine thisEngine;
-        if (weakness.Count == index)
+        if (true)
         {
             // Destroy(thisCar);
             thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
@@ -57,7 +57,11 @@ public class Population : MonoBehaviour {
             thisEngine.path = path;
             thisEngine.verbose = verbose;
             GetComponent<Camera>().car = thisCar.transform;
-            index++;
+            if (thisEngine.weakness != -1)
+            {
+                index++;
+                Run(thisCar, thisEngine);
+            }
 
             /*
             index++;
@@ -71,5 +75,15 @@ public class Population : MonoBehaviour {
             GetComponent<Camera>().car = thisCar.transform;
             */
         }
+    }
+
+    private void Run(GameObject thisCar, CarEngine thisEngine)
+    {
+        thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
+        thisEngine = thisCar.GetComponent<CarEngine>();
+        thisEngine.setDna(geneticData[index]);
+        thisEngine.path = path;
+        thisEngine.verbose = verbose;
+        GetComponent<Camera>().car = thisCar.transform;
     }
 }
