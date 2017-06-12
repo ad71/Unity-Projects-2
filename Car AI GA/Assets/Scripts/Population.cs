@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Population : MonoBehaviour {
 
-    public int populationSize = 1;
+    public int populationSize = 2;
     public int generation = 1;
     public Transform path;
     public GameObject car;
