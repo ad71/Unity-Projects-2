@@ -64,8 +64,8 @@ public class Population : MonoBehaviour {
     private void Run(bool instantiate)
     {
         // If dual is true, a new car in instantiated, else weakness value is returned
-        GameObject thisCar;
-        CarEngine thisEngine;
+        GameObject thisCar = new GameObject();
+        CarEngine thisEngine = new CarEngine();
         if (instantiate)
         {
             tempWeakness = -1f;
