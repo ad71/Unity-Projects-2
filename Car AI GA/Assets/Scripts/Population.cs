@@ -53,12 +53,15 @@ public class Population : MonoBehaviour {
             thisEngine.verbose = verbose;
             cars.Add(thisCar);
         }
-        GetComponent<Camera>().car = cars[index].transform;
     }
 
     private void Update()
     {
-        if (cars[index].GetComponent<CarEngine>().sw.ElapsedMilliseconds == 0) cars[index].GetComponent<CarEngine>().sw.Start();
+        if (cars[index].GetComponent<CarEngine>().sw.ElapsedMilliseconds == 0)
+        {
+            cars[index].GetComponent<CarEngine>().sw.Start();
+            GetComponent<Camera>().car = cars[index].transform;
+        }
         cars[index].SetActive(true);
     }
 }
