@@ -57,16 +57,17 @@ public class Population : MonoBehaviour {
         // GetComponent<Camera>().car = thisCar.transform;
         // index++
         // Destroy condition?
-        if (index == 0) Run(true, false);
-        else Run(false, true);
+        if (index == 0) Run(true);
     }
 
-    private void Run(bool instantiate, bool check_fitness)
+    private bool Run(bool instantiate)
     {
+        // If dual is true, a new car in instantiated, else weakness value is returned
         GameObject thisCar;
         CarEngine thisEngine;
         if (instantiate)
         {
+            tempWeakness = -1f;
             thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
             thisEngine = thisCar.GetComponent<CarEngine>();
             thisEngine.setDna(geneticData[index]);
@@ -74,11 +75,8 @@ public class Population : MonoBehaviour {
             thisEngine.verbose = verbose;
             GetComponent<Camera>().car = thisCar.transform;
             index++;
+            return true;
         }
-        if (check_fitness)
-        {
-            if (tempWeakness != -1)
-            Debug.Log("Weakness: " + tempWeakness);
-        }
+        return false;
     }
 }
