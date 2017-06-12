@@ -5,7 +5,9 @@ using UnityEngine;
 public class Population : MonoBehaviour {
 
     public int populationSize = 1;
+    public Transform path;
     public GameObject car;
+    public bool verbose = false;
 
     private List<DNA> geneticData;
     /* public static List<GameObject> cars = new List<GameObject>();
@@ -31,7 +33,10 @@ public class Population : MonoBehaviour {
             geneticData.Add(new DNA());
         }
         GameObject thisCar = (GameObject) Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
-        thisCar.GetComponent<CarEngine>().setDna(geneticData[0]);
+        CarEngine thisEngine = thisCar.GetComponent<CarEngine>();
+        thisEngine.setDna(geneticData[0]);
+        thisEngine.path = path;
+        thisEngine.verbose = verbose;
         GetComponent<Camera>().car = thisCar.transform;
     }
 }
