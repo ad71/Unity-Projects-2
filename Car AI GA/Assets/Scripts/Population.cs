@@ -5,13 +5,17 @@ using UnityEngine;
 public class Population : MonoBehaviour {
 
     public int populationSize = 1;
+    public int generation = 1;
     public Transform path;
     public GameObject car;
     public bool verbose = false;
 
     private List<DNA> geneticData;
+    // Improve matingPool system and replace it with monteCarlo method probably
+    private List<DNA> matingPool;
     private CarEngine thisEngine;
     private GameObject thisCar;
+    private int index = 0;
     /* public static List<GameObject> cars = new List<GameObject>();
     public static int numSpawned = 0;
 
@@ -36,7 +40,7 @@ public class Population : MonoBehaviour {
         }
         thisCar = (GameObject) Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
         thisEngine = thisCar.GetComponent<CarEngine>();
-        thisEngine.setDna(geneticData[0]);
+        thisEngine.setDna(geneticData[index]);
         thisEngine.path = this.path;
         thisEngine.verbose = this.verbose;
         this.GetComponent<Camera>().car = thisCar.transform;
@@ -44,6 +48,16 @@ public class Population : MonoBehaviour {
 
     private void Update()
     {
-        if (thisEngine.timeRecorded) Destroy(thisCar);
+        if (thisEngine.timeRecorded)
+        {
+            Destroy(thisCar);
+            index++;
+            thisCar = (GameObject)Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
+            thisEngine = thisCar.GetComponent<CarEngine>();
+            thisEngine.setDna(geneticData[index]);
+            thisEngine.path = this.path;
+            thisEngine.verbose = this.verbose;
+            this.GetComponent<Camera>().car = thisCar.transform;
+        }
     }
 }
