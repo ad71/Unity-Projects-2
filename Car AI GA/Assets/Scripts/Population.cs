@@ -57,10 +57,11 @@ public class Population : MonoBehaviour {
         // GetComponent<Camera>().car = thisCar.transform;
         // index++
         // Destroy condition?
-        if (index == 0) Run(true);
+        if (weakness.Count == index) Run(true);
+        else Run(false);
     }
 
-    private bool Run(bool instantiate)
+    private void Run(bool instantiate)
     {
         // If dual is true, a new car in instantiated, else weakness value is returned
         GameObject thisCar;
@@ -75,8 +76,13 @@ public class Population : MonoBehaviour {
             thisEngine.verbose = verbose;
             GetComponent<Camera>().car = thisCar.transform;
             index++;
-            return true;
         }
-        return false;
+        else
+        {
+            if (tempWeakness != -1)
+            {
+                weakness.Add(tempWeakness);
+            }
+        }
     }
 }
