@@ -108,6 +108,7 @@ public class CarEngine : MonoBehaviour {
         GetComponent<Rigidbody>().mass = mass;
         sw = new Stopwatch();
         sw.Start();
+        gameObject.SetActive(false);
     }
 
     private void Update()

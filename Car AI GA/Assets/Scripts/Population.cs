@@ -19,6 +19,7 @@ public class Population : MonoBehaviour {
     private int index = 0;
     private bool timed = false;
     public static float tempWeakness = -1f;
+    private List<GameObject> cars;
     /* public static List<GameObject> cars = new List<GameObject>();
     public static int numSpawned = 0;
 
@@ -32,16 +33,25 @@ public class Population : MonoBehaviour {
         }
     } */
 
+      ////////////////////////////////////////////////////////
+     /// Do not forget to assign camera to follow new car ///
+    ////////////////////////////////////////////////////////
 
-    // Do not forget to assign camera to follow new car
     private void Start()
     {
+        cars = new List<GameObject>();
         geneticData = new List<DNA>();
         weakness = new List<float>();
         matingPool = new List<DNA>();
         for(int i = 0; i < populationSize; ++i)
         {
             geneticData.Add(new DNA());
+            GameObject thisCar = (GameObject) Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
+            CarEngine thisEngine = thisCar.GetComponent<CarEngine>();
+            thisEngine.setDna(geneticData[i]);
+            thisEngine.path = path;
+            thisEngine.verbose = this.verbose;
+            cars.Add(thisCar);
         }
     }
 
@@ -57,11 +67,12 @@ public class Population : MonoBehaviour {
         // GetComponent<Camera>().car = thisCar.transform;
         // index++
         // Destroy condition?
-        if (weakness.Count == index) Run(true);
-        else Run(false);
+        //if (weakness.Count == index) Run(true);
+        // else Run(false);
+        cars[index].SetActive(true);
     }
 
-    private void Run(bool instantiate)
+    /*private void Run(bool instantiate)
     {
         if (instantiate)
         {
@@ -83,5 +94,5 @@ public class Population : MonoBehaviour {
                 weakness.Add(tempWeakness);
             }
         }
-    }
+    }*/
 }
