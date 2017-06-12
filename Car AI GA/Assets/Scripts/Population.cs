@@ -38,12 +38,12 @@ public class Population : MonoBehaviour {
         {
             geneticData.Add(new DNA());
         }
-        thisCar = (GameObject) Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
+        thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
         thisEngine = thisCar.GetComponent<CarEngine>();
         thisEngine.setDna(geneticData[index]);
-        thisEngine.path = this.path;
-        thisEngine.verbose = this.verbose;
-        this.GetComponent<Camera>().car = thisCar.transform;
+        thisEngine.path = path;
+        thisEngine.verbose = verbose;
+        GetComponent<Camera>().car = thisCar.transform;
     }
 
     private void Update()
@@ -52,12 +52,14 @@ public class Population : MonoBehaviour {
         {
             Destroy(thisCar);
             index++;
-            thisCar = (GameObject)Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
+            thisCar = new GameObject();
+            thisEngine = new CarEngine();
+            thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
             thisEngine = thisCar.GetComponent<CarEngine>();
             thisEngine.setDna(geneticData[index]);
-            thisEngine.path = this.path;
-            thisEngine.verbose = this.verbose;
-            this.GetComponent<Camera>().car = thisCar.transform;
+            thisEngine.path = path;
+            thisEngine.verbose = verbose;
+            GetComponent<Camera>().car = thisCar.transform;
         }
     }
 }
