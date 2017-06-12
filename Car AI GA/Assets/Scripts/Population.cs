@@ -63,16 +63,15 @@ public class Population : MonoBehaviour {
 
     private void Run(bool instantiate)
     {
-        // If dual is true, a new car in instantiated, else weakness value is returned
-        GameObject thisCar = new GameObject();
-        CarEngine thisEngine = new CarEngine();
         if (instantiate)
         {
+            GameObject thisCar = new GameObject();
+            CarEngine thisEngine = new CarEngine();
             tempWeakness = -1f;
             thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
             thisEngine = thisCar.GetComponent<CarEngine>();
             thisEngine.setDna(geneticData[index]);
-            thisEngine.path = path;
+            thisEngine.path = this.path;
             thisEngine.verbose = verbose;
             GetComponent<Camera>().car = thisCar.transform;
             index++;
