@@ -12,6 +12,7 @@ public class CarEngine : MonoBehaviour {
     public Renderer carTextureRenderer;
     public bool isBraking = false;
     public bool verbose = false;
+    public bool timeRecorded = false;
     private Vector3 centerofMass;
     private float maxSteerAngle = 0f;
     private float topSpeed = 0f;
@@ -114,8 +115,9 @@ public class CarEngine : MonoBehaviour {
         {
             sw.Stop();
             UnityEngine.Debug.Log("Time taken: " + sw.ElapsedMilliseconds + " ms");
-            sw = new Stopwatch();
-            sw.Start();
+            timeRecorded = true;
+            // sw = new Stopwatch();
+            // sw.Start();
         }
     }
 

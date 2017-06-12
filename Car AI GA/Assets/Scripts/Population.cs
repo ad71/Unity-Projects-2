@@ -10,6 +10,8 @@ public class Population : MonoBehaviour {
     public bool verbose = false;
 
     private List<DNA> geneticData;
+    private CarEngine thisEngine;
+    private GameObject thisCar;
     /* public static List<GameObject> cars = new List<GameObject>();
     public static int numSpawned = 0;
 
@@ -32,11 +34,16 @@ public class Population : MonoBehaviour {
         {
             geneticData.Add(new DNA());
         }
-        GameObject thisCar = (GameObject) Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
-        CarEngine thisEngine = thisCar.GetComponent<CarEngine>();
+        thisCar = (GameObject) Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
+        thisEngine = thisCar.GetComponent<CarEngine>();
         thisEngine.setDna(geneticData[0]);
-        thisEngine.path = path;
-        thisEngine.verbose = verbose;
-        GetComponent<Camera>().car = thisCar.transform;
+        thisEngine.path = this.path;
+        thisEngine.verbose = this.verbose;
+        this.GetComponent<Camera>().car = thisCar.transform;
+    }
+
+    private void Update()
+    {
+        if (thisEngine.timeRecorded) Destroy(thisCar);
     }
 }
