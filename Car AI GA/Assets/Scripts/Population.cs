@@ -11,11 +11,13 @@ public class Population : MonoBehaviour {
     public bool verbose = false;
 
     private List<DNA> geneticData;
+    private List<float> weakness;
     // Improve matingPool system and replace it with monteCarlo method probably
     private List<DNA> matingPool;
     // private CarEngine thisEngine;
     // private GameObject thisCar;
     private int index = 0;
+    private bool timed = false;
     /* public static List<GameObject> cars = new List<GameObject>();
     public static int numSpawned = 0;
 
@@ -34,6 +36,8 @@ public class Population : MonoBehaviour {
     private void Start()
     {
         geneticData = new List<DNA>();
+        weakness = new List<float>();
+        matingPool = new List<DNA>();
         for(int i = 0; i < populationSize; ++i)
         {
             geneticData.Add(new DNA());
@@ -42,11 +46,13 @@ public class Population : MonoBehaviour {
 
     private void Update()
     {
-        if (index == 0)
+        GameObject thisCar;
+        CarEngine thisEngine;
+        if (weakness.Count == index)
         {
             // Destroy(thisCar);
-            GameObject thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
-            CarEngine thisEngine = thisCar.GetComponent<CarEngine>();
+            thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
+            thisEngine = thisCar.GetComponent<CarEngine>();
             thisEngine.setDna(geneticData[index]);
             thisEngine.path = path;
             thisEngine.verbose = verbose;

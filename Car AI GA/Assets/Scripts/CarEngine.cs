@@ -13,6 +13,7 @@ public class CarEngine : MonoBehaviour {
     public bool isBraking = false;
     public bool verbose = false;
     public bool timeRecorded = false;
+    public float weakness = -1f;
     private Vector3 centerofMass;
     private float maxSteerAngle = 0f;
     private float topSpeed = 0f;
@@ -116,6 +117,7 @@ public class CarEngine : MonoBehaviour {
             sw.Stop();
             UnityEngine.Debug.Log("Time taken: " + sw.ElapsedMilliseconds + " ms");
             timeRecorded = true;
+            weakness = sw.ElapsedMilliseconds;
             // sw = new Stopwatch();
             // sw.Start();
         }
