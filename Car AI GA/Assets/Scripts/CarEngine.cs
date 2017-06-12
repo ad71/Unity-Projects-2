@@ -113,7 +113,7 @@ public class CarEngine : MonoBehaviour {
 
     private void Update()
     {
-        if (sw.ElapsedMilliseconds > 10000 && Vector3.Distance(this.transform.position, nodes[nodes.Count - 1].position) < switchToNextwaypointDistance)
+        if ((!timeRecorded) && (sw.ElapsedMilliseconds > 10000) && (Vector3.Distance(this.transform.position, nodes[nodes.Count - 1].position) < switchToNextwaypointDistance))
         {
             sw.Stop();
             UnityEngine.Debug.Log("Time taken: " + sw.ElapsedMilliseconds + " ms");
@@ -121,13 +121,11 @@ public class CarEngine : MonoBehaviour {
             Population.tempWeakness = weakness;
             if (!timeRecorded)
             {
+                timeRecorded = true;
                 Population.index+=1;
                 UnityEngine.Debug.Log(Population.index);
-                timeRecorded = true;
+                gameObject.SetActive(false);
             }
-            gameObject.SetActive(false);
-            // sw = new Stopwatch();
-            // sw.Start();
         }
     }
 

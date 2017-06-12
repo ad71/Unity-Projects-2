@@ -58,18 +58,6 @@ public class Population : MonoBehaviour {
 
     private void Update()
     {
-        // GameObject thisCar;
-        // CarEngine thisEngine;
-        // thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
-        // thisEngine = thisCar.GetComponent<CarEngine>();
-        // thisEngine.setDna(geneticData[index]);
-        // thisEngine.path = path;
-        // thisEngine.verbose = verbose;
-        // GetComponent<Camera>().car = thisCar.transform;
-        // Destroy condition?
-        // if (weakness.Count == index) Run(true);
-        // else Run(false);
         cars[index].SetActive(true);
-        // Debug.Log(index);
     }
 }
