@@ -18,7 +18,7 @@ public class Population : MonoBehaviour {
     // private GameObject thisCar;
     private int index = 0;
     private bool timed = false;
-    public static float tempWeakness;
+    public static float tempWeakness = -1f;
     /* public static List<GameObject> cars = new List<GameObject>();
     public static int numSpawned = 0;
 
@@ -58,6 +58,7 @@ public class Population : MonoBehaviour {
         // index++
         // Destroy condition?
         if (index == 0) Run(true, false);
+        else Run(false, true);
     }
 
     private void Run(bool instantiate, bool check_fitness)
@@ -73,6 +74,11 @@ public class Population : MonoBehaviour {
             thisEngine.verbose = verbose;
             GetComponent<Camera>().car = thisCar.transform;
             index++;
+        }
+        if (check_fitness)
+        {
+            if (tempWeakness != -1)
+            Debug.Log("Weakness: " + tempWeakness);
         }
     }
 }
