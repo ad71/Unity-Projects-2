@@ -120,6 +120,7 @@ public class CarEngine : MonoBehaviour {
             timeRecorded = true;
             weakness = sw.ElapsedMilliseconds;
             Population.tempWeakness = weakness;
+            Population.index++;
             Destroy(gameObject);
             // sw = new Stopwatch();
             // sw.Start();

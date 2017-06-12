@@ -16,7 +16,7 @@ public class Population : MonoBehaviour {
     private List<DNA> matingPool;
     // private CarEngine thisEngine;
     // private GameObject thisCar;
-    private int index = 0;
+    public static int index = 0;
     private bool timed = false;
     public static float tempWeakness = -1f;
     private List<GameObject> cars;
@@ -53,6 +53,7 @@ public class Population : MonoBehaviour {
             thisEngine.verbose = this.verbose;
             cars.Add(thisCar);
         }
+        GetComponent<Camera>().car = cars[index].transform;
     }
 
     private void Update()
@@ -67,7 +68,7 @@ public class Population : MonoBehaviour {
         // GetComponent<Camera>().car = thisCar.transform;
         // index++
         // Destroy condition?
-        //if (weakness.Count == index) Run(true);
+        // if (weakness.Count == index) Run(true);
         // else Run(false);
         cars[index].SetActive(true);
     }
