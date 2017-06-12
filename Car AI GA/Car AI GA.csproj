@@ -88,6 +88,7 @@
     <Compile Include="Assets\Scripts\CarEngine.cs" />
     <Compile Include="Assets\Scripts\DNA.cs" />
     <Compile Include="Assets\Scripts\Path.cs" />
+    <Compile Include="Assets\Scripts\Population.cs" />
     <Compile Include="Assets\Scripts\UserControl.cs" />
     <Compile Include="Assets\Scripts\Wheel.cs" />
   </ItemGroup>

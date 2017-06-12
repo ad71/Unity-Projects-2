@@ -110,7 +110,7 @@ public class CarEngine : MonoBehaviour {
 
     private void Update()
     {
-        if (Vector3.Distance(this.transform.position, nodes[nodes.Count - 1].position) < switchToNextwaypointDistance)
+        if (sw.ElapsedMilliseconds > 10000 && Vector3.Distance(this.transform.position, nodes[nodes.Count - 1].position) < switchToNextwaypointDistance)
         {
             sw.Stop();
             UnityEngine.Debug.Log("Time taken: " + sw.ElapsedMilliseconds + " ms");
@@ -329,5 +329,15 @@ public class CarEngine : MonoBehaviour {
             wheelrr.steerAngle = Mathf.Lerp(wheelrr.steerAngle, -targetSteerAngle, Time.deltaTime * turningSpeed);
             wheelrl.steerAngle = Mathf.Lerp(wheelrl.steerAngle, -targetSteerAngle, Time.deltaTime * turningSpeed);
         }
+    }
+
+    public DNA getDna()
+    {
+        return dna;
+    }
+
+    public void setDna(DNA newDna)
+    {
+        dna = newDna;
     }
 }
