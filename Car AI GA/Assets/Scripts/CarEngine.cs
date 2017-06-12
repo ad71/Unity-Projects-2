@@ -121,7 +121,7 @@ public class CarEngine : MonoBehaviour {
             Population.tempWeakness = weakness;
             if (!timeRecorded)
             {
-                Population.index++;
+                Population.index+=1;
                 UnityEngine.Debug.Log(Population.index);
                 timeRecorded = true;
             }
@@ -133,7 +133,7 @@ public class CarEngine : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (doesnotGiveAFuck)
+        if (!doesnotGiveAFuck)
         {
             Sense();
         }
