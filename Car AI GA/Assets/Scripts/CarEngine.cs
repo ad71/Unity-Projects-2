@@ -97,6 +97,7 @@ public class CarEngine : MonoBehaviour {
 
     private void Start()
     {
+        timeRecorded = false;
         Transform[] pathTransforms = path.GetComponentsInChildren<Transform>();
         nodes = new List<Transform>();
         for (int i = 0; i < pathTransforms.Length; ++i)
@@ -108,6 +109,7 @@ public class CarEngine : MonoBehaviour {
         GetComponent<Rigidbody>().mass = mass;
         sw = new Stopwatch();
         sw.Start();
+        UnityEngine.Debug.Log("Time: " + sw.ElapsedMilliseconds);
         gameObject.SetActive(false);
     }
 
@@ -118,6 +120,7 @@ public class CarEngine : MonoBehaviour {
             sw.Stop();
             UnityEngine.Debug.Log("Time taken: " + sw.ElapsedMilliseconds + " ms");
             weakness = sw.ElapsedMilliseconds;
+            sw.Reset();
             Population.tempWeakness = weakness;
             if (!timeRecorded)
             {
