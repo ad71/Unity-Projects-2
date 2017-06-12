@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Population : MonoBehaviour {
 
-    public int populationSize = 2;
+    private int populationSize = 2;
     public int generation = 1;
     public Transform path;
     public GameObject car;
@@ -46,14 +46,15 @@ public class Population : MonoBehaviour {
         for(int i = 0; i < populationSize; ++i)
         {
             geneticData.Add(new DNA());
-            GameObject thisCar = (GameObject) Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
+            GameObject thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
             CarEngine thisEngine = thisCar.GetComponent<CarEngine>();
             thisEngine.setDna(geneticData[i]);
             thisEngine.path = path;
-            thisEngine.verbose = this.verbose;
+            thisEngine.verbose = verbose;
             cars.Add(thisCar);
         }
         GetComponent<Camera>().car = cars[index].transform;
+        // Debug.Log(cars.Count);
     }
 
     private void Update()
@@ -71,6 +72,7 @@ public class Population : MonoBehaviour {
         // if (weakness.Count == index) Run(true);
         // else Run(false);
         cars[index].SetActive(true);
+        // Debug.Log(index);
     }
 
     /*private void Run(bool instantiate)

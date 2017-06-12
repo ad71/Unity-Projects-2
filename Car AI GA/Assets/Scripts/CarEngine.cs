@@ -117,11 +117,15 @@ public class CarEngine : MonoBehaviour {
         {
             sw.Stop();
             UnityEngine.Debug.Log("Time taken: " + sw.ElapsedMilliseconds + " ms");
-            timeRecorded = true;
             weakness = sw.ElapsedMilliseconds;
             Population.tempWeakness = weakness;
-            Population.index++;
-            Destroy(gameObject);
+            if (!timeRecorded)
+            {
+                Population.index++;
+                UnityEngine.Debug.Log(Population.index);
+                timeRecorded = true;
+            }
+            gameObject.SetActive(false);
             // sw = new Stopwatch();
             // sw.Start();
         }
