@@ -46,39 +46,22 @@ public class Population : MonoBehaviour {
 
     private void Update()
     {
-        GameObject thisCar;
-        CarEngine thisEngine;
-        if (true)
-        {
-            // Destroy(thisCar);
-            thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
-            thisEngine = thisCar.GetComponent<CarEngine>();
-            thisEngine.setDna(geneticData[index]);
-            thisEngine.path = path;
-            thisEngine.verbose = verbose;
-            GetComponent<Camera>().car = thisCar.transform;
-            if (thisEngine.weakness != -1)
-            {
-                index++;
-                Run(thisCar, thisEngine);
-            }
-
-            /*
-            index++;
-            thisCar = new GameObject();
-            thisEngine = new CarEngine();
-            thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
-            thisEngine = thisCar.GetComponent<CarEngine>();
-            thisEngine.setDna(geneticData[index]);
-            thisEngine.path = path;
-            thisEngine.verbose = verbose;
-            GetComponent<Camera>().car = thisCar.transform;
-            */
-        }
+        // GameObject thisCar;
+        // CarEngine thisEngine;
+        // thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
+        // thisEngine = thisCar.GetComponent<CarEngine>();
+        // thisEngine.setDna(geneticData[index]);
+        // thisEngine.path = path;
+        // thisEngine.verbose = verbose;
+        // GetComponent<Camera>().car = thisCar.transform;
+        // index++
+        // Destroy condition?
     }
 
-    private void Run(GameObject thisCar, CarEngine thisEngine)
+    private void Run()
     {
+        GameObject thisCar;
+        CarEngine thisEngine;
         thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
         thisEngine = thisCar.GetComponent<CarEngine>();
         thisEngine.setDna(geneticData[index]);
