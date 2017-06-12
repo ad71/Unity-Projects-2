@@ -13,8 +13,8 @@ public class Population : MonoBehaviour {
     private List<DNA> geneticData;
     // Improve matingPool system and replace it with monteCarlo method probably
     private List<DNA> matingPool;
-    private CarEngine thisEngine;
-    private GameObject thisCar;
+    // private CarEngine thisEngine;
+    // private GameObject thisCar;
     private int index = 0;
     /* public static List<GameObject> cars = new List<GameObject>();
     public static int numSpawned = 0;
@@ -38,19 +38,22 @@ public class Population : MonoBehaviour {
         {
             geneticData.Add(new DNA());
         }
-        thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
-        thisEngine = thisCar.GetComponent<CarEngine>();
-        thisEngine.setDna(geneticData[index]);
-        thisEngine.path = path;
-        thisEngine.verbose = verbose;
-        GetComponent<Camera>().car = thisCar.transform;
     }
 
     private void Update()
     {
-        if (thisEngine.timeRecorded)
+        if (index == 0)
         {
-            Destroy(thisCar);
+            // Destroy(thisCar);
+            GameObject thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
+            CarEngine thisEngine = thisCar.GetComponent<CarEngine>();
+            thisEngine.setDna(geneticData[index]);
+            thisEngine.path = path;
+            thisEngine.verbose = verbose;
+            GetComponent<Camera>().car = thisCar.transform;
+            index++;
+
+            /*
             index++;
             thisCar = new GameObject();
             thisEngine = new CarEngine();
@@ -60,6 +63,7 @@ public class Population : MonoBehaviour {
             thisEngine.path = path;
             thisEngine.verbose = verbose;
             GetComponent<Camera>().car = thisCar.transform;
+            */
         }
     }
 }
