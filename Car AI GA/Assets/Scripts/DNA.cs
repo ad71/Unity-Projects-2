@@ -67,6 +67,7 @@ public class DNA {
         {
             if (Random.Range(0f, 1f) < mutationRate)
             {
+                    Debug.Log("One mutation occured");
                 genes[i] = Random.Range(0f, 1f);
             }
         }

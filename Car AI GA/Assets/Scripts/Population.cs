@@ -102,6 +102,8 @@ public class Population : MonoBehaviour {
         List<DNA> newDna = new List<DNA>();
         for (int i = 0; i < populationSize; ++i)
         {
+            // To do: prevent both parents from being the same
+
             int indexA = Random.Range(0, matingPool.Count - 1);
                 Debug.Log("IndexA: " + indexA);
             int indexB = Random.Range(0, matingPool.Count - 1);
@@ -114,6 +116,8 @@ public class Population : MonoBehaviour {
                 Debug.Log("ParentB genes length: " + parentB.genes.Count);
             DNA child = parentA.Crossover(parentB);
             if (child == null) Debug.Log("Child is null");
+            child.Mutate();
+            Debug.Log("Mutation done");
             GameObject thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
             CarEngine thisEngine = thisCar.GetComponent<CarEngine>();
             thisEngine.setDna(child);
