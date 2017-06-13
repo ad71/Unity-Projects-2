@@ -59,7 +59,7 @@ public class CarEngine : MonoBehaviour {
         topSpeed = Mathf.Lerp(50f, 150f, dna.genes[1]);
         maxMotorTorque = Mathf.Lerp(50f, 200f, dna.genes[2]);
         maxBrakingTorque = Mathf.Lerp(50f, 400f, dna.genes[3]);
-        centerofMass = new Vector3(0, Mathf.Lerp(-0.3f, 0.3f, dna.genes[4]), 0);
+        centerofMass = new Vector3(0, Mathf.Lerp(-0.25f, 0.25f, dna.genes[4]), 0);
         mass = Mathf.Lerp(500f, 1500f, dna.genes[5]);
         // Sensors do not matter now, as we are trying to find the global minima of time taken to traverse the track
         sensorLength = Mathf.Lerp(1f, 5f, dna.genes[6]);

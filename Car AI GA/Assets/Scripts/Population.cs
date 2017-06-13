@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Population : MonoBehaviour {
 
-    private int populationSize = 2;
+    private int populationSize = 4;
     public int generation = 1;
     public Transform path;
     public GameObject car;
@@ -43,7 +43,7 @@ public class Population : MonoBehaviour {
 
     private void Update()
     {
-            Debug.Log("Cars length: " + cars.Count);
+        // Debug.Log("Cars length: " + cars.Count);
         if (index == populationSize)
         {
             Evaluate();
