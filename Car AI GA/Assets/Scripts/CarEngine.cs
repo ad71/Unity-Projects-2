@@ -14,24 +14,26 @@ public class CarEngine : MonoBehaviour {
     public bool verbose = false;
     public bool timeRecorded = false;
     public float weakness = -1f;
-    private Vector3 centerofMass;
-    private float maxSteerAngle = 0f;
-    private float topSpeed = 0f;
-    private float maxMotorTorque = 0f;
-    private float maxBrakingTorque = 0f;   
-    private float mass = 0f;
-    private float sensorLength = 0f;
-    private float sensorSkewAngle = 0f;
-    private float switchToNextwaypointDistance = 0f;
-    private float brakeTopSpeedMultiplier;
-    private float brakeSteerMultiplier;
-    private float avoidMultiplierMultiplier;
-    private float turningSpeed = 0f;
-    private bool fourWheelDrive;
-    private bool fourWheelBrake;
-    private bool fourWheelTurn;
-    private bool doesnotGiveAFuck;
-    private bool doesItLerp;
+
+    [Header("Genetic Data")]
+    [SerializeField] private Vector3 centerofMass;
+    [SerializeField] private float maxSteerAngle = 0f;
+    [SerializeField] private float topSpeed = 0f;
+    [SerializeField] private float maxMotorTorque = 0f;
+    [SerializeField] private float maxBrakingTorque = 0f;
+    [SerializeField] private float mass = 0f;
+    [SerializeField] private float sensorLength = 0f;
+    [SerializeField] private float sensorSkewAngle = 0f;
+    [SerializeField] private float switchToNextwaypointDistance = 0f;
+    [SerializeField] private float brakeTopSpeedMultiplier;
+    [SerializeField] private float brakeSteerMultiplier;
+    [SerializeField] private float avoidMultiplierMultiplier;
+    [SerializeField] private float turningSpeed = 0f;
+    [SerializeField] private bool fourWheelDrive;
+    [SerializeField] private bool fourWheelBrake;
+    [SerializeField] private bool fourWheelTurn;
+    [SerializeField] private bool doesNotGiveAFuck;
+    [SerializeField] private bool doesItLerp;
 
     [Header("Colliders")]
     public WheelCollider wheelfr;
@@ -66,7 +68,7 @@ public class CarEngine : MonoBehaviour {
         if (Random.Range(0f, 1f) < dna.genes[9]) fourWheelBrake = true;
         if (10f * Random.Range(0f, 1f) < dna.genes[10]) fourWheelTurn = true;
         switchToNextwaypointDistance = Mathf.Lerp(1f, 7f, dna.genes[11]);
-        if (Random.Range(0f, 1f) < dna.genes[12]) doesnotGiveAFuck = true;
+        if (Random.Range(0f, 1f) < dna.genes[12]) doesNotGiveAFuck = true;
         brakeTopSpeedMultiplier = Mathf.Lerp(0.2f, 0.75f, dna.genes[13]);
         brakeSteerMultiplier = Mathf.Lerp(0.2f, 0.75f, dna.genes[14]);
         avoidMultiplierMultiplier = Mathf.Lerp(0.5f, 1f, dna.genes[15]);
@@ -87,7 +89,7 @@ public class CarEngine : MonoBehaviour {
             UnityEngine.Debug.Log("4 Wheel brake: " + fourWheelBrake);
             UnityEngine.Debug.Log("4 Wheel turn: " + fourWheelTurn);
             UnityEngine.Debug.Log("Switch to next waypoint distance: " + switchToNextwaypointDistance);
-            UnityEngine.Debug.Log("Rowdy: " + doesnotGiveAFuck);
+            UnityEngine.Debug.Log("Rowdy: " + doesNotGiveAFuck);
             UnityEngine.Debug.Log("Brake top speed multiplier: " + brakeTopSpeedMultiplier);
             UnityEngine.Debug.Log("Brake steer multiplier: " + brakeSteerMultiplier);
             UnityEngine.Debug.Log("Avoid multiplier magnitude: " + avoidMultiplierMultiplier);
@@ -136,7 +138,7 @@ public class CarEngine : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (!doesnotGiveAFuck)
+        if (!doesNotGiveAFuck)
         {
             Sense();
         }

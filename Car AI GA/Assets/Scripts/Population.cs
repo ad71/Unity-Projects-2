@@ -59,16 +59,16 @@ public class Population : MonoBehaviour {
     private void Update()
     {
 
-        if (index == populationSize) Evaluate();
+        if (index == populationSize)
+        {
+            Evaluate();
+            Select();
+        }
         if (cars[index].GetComponent<CarEngine>().sw.ElapsedMilliseconds == 0)
         {
             // Cannot start stopwatch in the CarEngine class as it starts for cars that are not yet active and gives funny results
             cars[index].GetComponent<CarEngine>().sw.Start();
             GetComponent<Camera>().car = cars[index].transform;
-            for(int i = 0; i < fitness.Count; ++i)
-            {
-                Debug.Log("Fitness: " + (i + 1) + ": " + fitness[i]);
-            }
         }
         cars[index].SetActive(true);
     }
@@ -76,5 +76,46 @@ public class Population : MonoBehaviour {
     private void Evaluate()
     {
         Debug.Log("In evaluate");
+        index = 0;
+        generation++;
+        float maxFit = 0;
+        for (int i = 0; i < this.populationSize; ++i)
+        {
+            // For the ones timed-out, a small probability is added
+            if (fitness[i] < 0) fitness[i] = 100;
+            // Finding maximum fitness to normalize
+            if (fitness[i] > maxFit) maxFit = fitness[i];
+        }
+
+        for(int i = 0; i < populationSize; ++i)
+        {
+            fitness[i] /= maxFit;
+            Debug.Log("Normalized fitness: " + fitness[i]);
+        }
+
+        matingPool = new List<DNA>();
+        // The 'not so efficient' way of adding DNA to the matingPool
+        // Refactor this to use the monte carlo method
+        for (int i = 0; i < populationSize; ++i)
+        {
+            int n = (int) Mathf.Floor(fitness[i] * 100);
+            for(int j = 0; j < n; ++j)
+            {
+                matingPool.Add(geneticData[i]);
+            }
+        }
+    }
+
+    private void Select()
+    {
+        List<DNA> newDna = new List<DNA>();
+        for(int i = 0; i < populationSize; ++i)
+        {
+            int indexA = Random.Range(0, matingPool.Count - 1);
+            int indexB = Random.Range(0, matingPool.Count - 1);
+            DNA parentA = matingPool[indexA];
+            DNA parentB = matingPool[indexB];
+            DNA child = parentA.Crossover(parentB);
+        }
     }
 }

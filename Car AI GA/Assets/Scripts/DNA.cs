@@ -35,4 +35,28 @@ public class DNA {
             this.genes.Add(Random.Range(0f, 1f));
         }
     }
+
+    public DNA(List<float> _genes)
+    {
+        this.genes = new List<float>();
+        this.genes = _genes;
+    }
+
+    public DNA Crossover (DNA partner)
+    {
+        List<float> newGenes = new List<float>();
+        int mid = Random.Range(0, genes.Count - 1);
+        for(int i = 0; i < genes.Count; ++i)
+        {
+            if (i > mid)
+            {
+                newGenes[i] = genes[i];
+            }
+            else
+            {
+                newGenes[i] = partner.genes[i];
+            }
+        }
+        return new DNA(newGenes);
+    }
 }
