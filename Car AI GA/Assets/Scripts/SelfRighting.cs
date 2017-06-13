@@ -8,16 +8,16 @@ public class SelfRighting : MonoBehaviour {
     [SerializeField] private float velocityThreshold = 1f;
 
     private float lastOKTime;
-    private Rigidbody rigidbody;
+    private Rigidbody rigidBody;
 
 	// Use this for initialization
 	private void Start () {
-        rigidbody = GetComponent<Rigidbody>();	
+        rigidBody = GetComponent<Rigidbody>();	
 	}
 	
 	// Update is called once per frame
 	private void Update () {
-		if (transform.up.y > 0f || rigidbody.velocity.magnitude > velocityThreshold)
+		if (transform.up.y > 0f || rigidBody.velocity.magnitude > velocityThreshold)
         {
             lastOKTime = Time.time;
         }

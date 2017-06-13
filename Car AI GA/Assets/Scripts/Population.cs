@@ -63,6 +63,7 @@ public class Population : MonoBehaviour {
         {
             Evaluate();
             Select();
+            Generate();
         }
         if (cars[index].GetComponent<CarEngine>().sw.ElapsedMilliseconds == 0)
         {
@@ -116,6 +117,34 @@ public class Population : MonoBehaviour {
             DNA parentA = matingPool[indexA];
             DNA parentB = matingPool[indexB];
             DNA child = parentA.Crossover(parentB);
+        }
+        geneticData = new List<DNA>();
+        geneticData = newDna;
+    }
+
+    private void Generate()
+    {
+        /*for (int i = 0; i < populationSize; ++i)
+        {
+            geneticData.Add(new DNA());
+            GameObject thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
+            CarEngine thisEngine = thisCar.GetComponent<CarEngine>();
+            thisEngine.setDna(geneticData[i]);
+            thisEngine.path = path;
+            thisEngine.verbose = verbose;
+            cars.Add(thisCar);
+            GetComponent<Camera>().car = cars[index].transform;
+        }*/
+        cars = new List<GameObject>();
+        for(int i = 0; i < populationSize; ++i)
+        {
+            GameObject thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
+            CarEngine thisEngine = thisCar.GetComponent<CarEngine>();
+            thisEngine.setDna(geneticData[i]);
+            thisEngine.path = path;
+            thisEngine.verbose = verbose;
+            cars.Add(thisCar);
+            GetComponent<Camera>().car = cars[index].transform;
         }
     }
 }
