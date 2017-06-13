@@ -143,6 +143,7 @@ public class Population : MonoBehaviour {
         }
         fitness = new List<float>();
         matingPool = new List<DNA>();
+        index = 0;
     }
 
     /*private void Generate()
