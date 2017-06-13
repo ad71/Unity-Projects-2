@@ -45,7 +45,7 @@ public class DNA {
     {
         List<float> newGenes = new List<float>();
         int mid = Random.Range(0, 18);
-        Debug.Log("Split point: " + mid);
+            Debug.Log("Split point: " + mid);
         for(int i = 0; i < 18; ++i)
         {
             if (i > mid)
