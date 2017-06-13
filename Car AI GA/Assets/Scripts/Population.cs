@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Population : MonoBehaviour {
 
-    private int populationSize = 10;
+    private int populationSize = 3;
     public int generation = 1;
     public Transform path;
     public GameObject car;
     public bool verbose = false;
 
     private List<DNA> geneticData;
-    private List<float> weakness;
+    public static List<float> fitness;
     // Improve matingPool system and replace it with monteCarlo method probably
     private List<DNA> matingPool;
     // private CarEngine thisEngine;
@@ -41,7 +41,7 @@ public class Population : MonoBehaviour {
     {
         cars = new List<GameObject>();
         geneticData = new List<DNA>();
-        weakness = new List<float>();
+        fitness = new List<float>();
         matingPool = new List<DNA>();
         for(int i = 0; i < populationSize; ++i)
         {
@@ -58,11 +58,23 @@ public class Population : MonoBehaviour {
 
     private void Update()
     {
+
+        if (index == populationSize) Evaluate();
         if (cars[index].GetComponent<CarEngine>().sw.ElapsedMilliseconds == 0)
         {
+            // Cannot start stopwatch in the CarEngine class as it starts for cars that are not yet active and gives funny results
             cars[index].GetComponent<CarEngine>().sw.Start();
             GetComponent<Camera>().car = cars[index].transform;
+            for(int i = 0; i < fitness.Count; ++i)
+            {
+                Debug.Log("Fitness: " + (i + 1) + ": " + fitness[i]);
+            }
         }
         cars[index].SetActive(true);
+    }
+
+    private void Evaluate()
+    {
+        Debug.Log("In evaluate");
     }
 }

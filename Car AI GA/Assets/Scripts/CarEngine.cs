@@ -49,6 +49,7 @@ public class CarEngine : MonoBehaviour {
     private bool avoiding = false;
     private float targetSteerAngle = 0f;
     private DNA dna;
+    private static int timeOut = 120000;
 
     private void Init(DNA dna)
     {
@@ -115,18 +116,19 @@ public class CarEngine : MonoBehaviour {
 
     private void Update()
     {
-        if ((sw.ElapsedMilliseconds > 120000) || (current > 20 && (Vector3.Distance(this.transform.position, nodes[nodes.Count - 1].position) < switchToNextwaypointDistance)))
+        if ((sw.ElapsedMilliseconds > timeOut) || (current > 20 && (Vector3.Distance(this.transform.position, nodes[nodes.Count - 1].position) < switchToNextwaypointDistance)))
         {
             sw.Stop();
             UnityEngine.Debug.Log("Time taken: " + sw.ElapsedMilliseconds + " ms");
             weakness = sw.ElapsedMilliseconds;
             sw.Reset();
             Population.tempWeakness = weakness;
+            Population.fitness.Add(timeOut - weakness);
             if (!timeRecorded)
             {
                 timeRecorded = true;
                 Population.index+=1;
-                UnityEngine.Debug.Log(Population.index);
+                // UnityEngine.Debug.Log(Population.index);
                 gameObject.SetActive(false);
             }
         }
