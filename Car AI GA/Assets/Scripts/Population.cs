@@ -52,6 +52,7 @@ public class Population : MonoBehaviour {
             thisEngine.path = path;
             thisEngine.verbose = verbose;
             cars.Add(thisCar);
+            GetComponent<Camera>().car = cars[index].transform;
         }
     }
 
