@@ -45,15 +45,16 @@ public class DNA {
     {
         List<float> newGenes = new List<float>();
         int mid = Random.Range(0, 18);
+        Debug.Log("Split point: " + mid);
         for(int i = 0; i < 18; ++i)
         {
             if (i > mid)
             {
-                newGenes[i] = this.genes[i];
+                newGenes.Add(this.genes[i]);
             }
             else
             {
-                newGenes[i] = partner.genes[i];
+                newGenes.Add(partner.genes[i]);
             }
         }
         return new DNA(newGenes);

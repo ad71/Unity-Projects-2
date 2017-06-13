@@ -116,7 +116,7 @@ public class Population : MonoBehaviour {
         cars = new List<GameObject>();
         Debug.Log("Cars count: " + cars.Count);
         List<DNA> newDna = new List<DNA>();
-        for(int i = 0; i < populationSize; ++i)
+        for (int i = 0; i < populationSize; ++i)
         {
             int indexA = Random.Range(0, matingPool.Count - 1);
             Debug.Log("IndexA: " + indexA);
@@ -124,8 +124,10 @@ public class Population : MonoBehaviour {
             Debug.Log("IndexB: " + indexB);
             DNA parentA = matingPool[indexA];
             if (parentA == null) Debug.Log("ParentA is null");
+            Debug.Log("ParentA genes length: " + parentA.genes.Count);
             DNA parentB = matingPool[indexB];
             if (parentB == null) Debug.Log("ParentB is null");
+            Debug.Log("ParentB genes length: " + parentB.genes.Count);
             DNA child = parentA.Crossover(parentB);
             if (child == null) Debug.Log("Child is null");
             GameObject thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
