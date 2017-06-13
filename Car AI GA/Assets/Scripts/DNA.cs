@@ -26,6 +26,7 @@ public class DNA {
      */
 
     public List<float> genes;
+    private static float mutationRate = 0.01f;
 
     public DNA()
     {
@@ -58,5 +59,16 @@ public class DNA {
             }
         }
         return new DNA(newGenes);
+    }
+
+    public void Mutate()
+    {
+        for(int i = 0; i < genes.Count; ++i)
+        {
+            if (Random.Range(0f, 1f) < mutationRate)
+            {
+                genes[i] = Random.Range(0f, 1f);
+            }
+        }
     }
 }
