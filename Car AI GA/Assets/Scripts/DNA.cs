@@ -45,8 +45,8 @@ public class DNA {
     public DNA Crossover (DNA partner)
     {
         List<float> newGenes = new List<float>();
-        int mid = Random.Range(0, genes.Count - 1);
-        for(int i = 0; i < genes.Count; ++i)
+        int mid = Random.Range(0, genes.Count);
+        for(int i = 0; i < 18; ++i)
         {
             if (i > mid)
             {

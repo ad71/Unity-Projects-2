@@ -107,6 +107,7 @@ public class Population : MonoBehaviour {
             }
         }
         if (matingPool.Count < 1) Debug.Log("Mating pool empty");
+        Debug.Log("Mating pool size: " + matingPool.Count);
     }
 
     private void Select()
