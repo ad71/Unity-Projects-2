@@ -63,7 +63,7 @@ public class Population : MonoBehaviour {
         {
             Evaluate();
             Select();
-            Generate();
+            // Generate();
         }
         if (cars[index].GetComponent<CarEngine>().sw.ElapsedMilliseconds == 0)
         {
@@ -109,6 +109,7 @@ public class Population : MonoBehaviour {
 
     private void Select()
     {
+        cars = new List<GameObject>();
         List<DNA> newDna = new List<DNA>();
         for(int i = 0; i < populationSize; ++i)
         {
@@ -117,24 +118,20 @@ public class Population : MonoBehaviour {
             DNA parentA = matingPool[indexA];
             DNA parentB = matingPool[indexB];
             DNA child = parentA.Crossover(parentB);
-        }
-        geneticData = new List<DNA>();
-        geneticData = newDna;
-    }
-
-    private void Generate()
-    {
-        /*for (int i = 0; i < populationSize; ++i)
-        {
-            geneticData.Add(new DNA());
             GameObject thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
             CarEngine thisEngine = thisCar.GetComponent<CarEngine>();
-            thisEngine.setDna(geneticData[i]);
+            thisEngine.setDna(child);
             thisEngine.path = path;
             thisEngine.verbose = verbose;
             cars.Add(thisCar);
             GetComponent<Camera>().car = cars[index].transform;
-        }*/
+        }
+        fitness = new List<float>();
+        matingPool = new List<DNA>();
+    }
+
+    private void Generate()
+    {
         cars = new List<GameObject>();
         for(int i = 0; i < populationSize; ++i)
         {
@@ -146,5 +143,7 @@ public class Population : MonoBehaviour {
             cars.Add(thisCar);
             GetComponent<Camera>().car = cars[index].transform;
         }
+        fitness = new List<float>();
+        matingPool = new List<DNA>();
     }
 }
