@@ -38,19 +38,18 @@ public class DNA {
 
     public DNA(List<float> _genes)
     {
-        this.genes = new List<float>();
-        this.genes = _genes;
+        this.genes = new List<float>(_genes);
     }
 
     public DNA Crossover (DNA partner)
     {
         List<float> newGenes = new List<float>();
-        int mid = Random.Range(0, genes.Count);
+        int mid = Random.Range(0, 18);
         for(int i = 0; i < 18; ++i)
         {
             if (i > mid)
             {
-                newGenes[i] = genes[i];
+                newGenes[i] = this.genes[i];
             }
             else
             {
