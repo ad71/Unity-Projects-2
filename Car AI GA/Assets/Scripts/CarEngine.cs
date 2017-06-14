@@ -118,7 +118,7 @@ public class CarEngine : MonoBehaviour {
 
     private void Update()
     {
-        if ((sw.ElapsedMilliseconds > timeOut) || (current > 20 && (Vector3.Distance(this.transform.position, nodes[nodes.Count - 1].position) <= switchToNextwaypointDistance + 0.5f)))
+        if ((sw.ElapsedMilliseconds > timeOut) || (current > 20 && (Vector3.Distance(this.transform.position, nodes[nodes.Count - 1].position) <= switchToNextwaypointDistance)))
         {
             sw.Stop();
             UnityEngine.Debug.Log("Time taken: " + sw.ElapsedMilliseconds + " ms");

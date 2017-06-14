@@ -44,11 +44,12 @@ public class Population : MonoBehaviour {
             GetComponent<Camera>().car = cars[index].transform;
         }
         Debug.Log("Count of cars after population: " + cars.Count);
+        Debug.Log("Genes of the first car: " + cars[0].GetComponent<CarEngine>().getDna().genes[0] + " " + cars[0].GetComponent<CarEngine>().getDna().genes[1]);
+        Debug.Log("Genes of the second car: " + cars[1].GetComponent<CarEngine>().getDna().genes[0] + " " + cars[1].GetComponent<CarEngine>().getDna().genes[1]);
     }
 
     private void Update()
     {
-        Debug.Log("Cars count in update: " + cars.Count);
         if (index == populationSize)
         {
             Evaluate();
