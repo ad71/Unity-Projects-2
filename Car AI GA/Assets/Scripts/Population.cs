@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Population : MonoBehaviour {
 
-    private int populationSize = 4;
+    private int populationSize = 2;
     public int generation = 1;
     public Transform path;
     public GameObject car;
@@ -116,9 +116,11 @@ public class Population : MonoBehaviour {
             DNA parentA = matingPool[indexA];
             if (parentA == null) Debug.Log("ParentA is null");
                 Debug.Log("ParentA genes length: " + parentA.genes.Count);
+                Debug.Log("ParentA genes: " + parentA.genes[0] + " " + parentA.genes[1]);
             DNA parentB = matingPool[indexB];
             if (parentB == null) Debug.Log("ParentB is null");
                 Debug.Log("ParentB genes length: " + parentB.genes.Count);
+                Debug.Log("ParentB genes: " + parentB.genes[0] + " " + parentB.genes[1]);
             DNA child = parentA.Crossover(parentB);
             if (child == null) Debug.Log("Child is null");
             child.Mutate();
