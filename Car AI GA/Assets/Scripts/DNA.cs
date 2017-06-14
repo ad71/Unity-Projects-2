@@ -58,6 +58,7 @@ public class DNA {
                 newGenes.Add(partner.genes[i]);
             }
         }
+        Debug.Log("New genes count: " + newGenes.Count);
         return new DNA(newGenes);
     }
 

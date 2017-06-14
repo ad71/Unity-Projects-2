@@ -25,9 +25,13 @@ public class Population : MonoBehaviour {
     private void Start()
     {
         cars = new List<GameObject>();
+        Debug.Log("Init, gameobject array cars count: " + cars.Count);
         geneticData = new List<DNA>();
+        Debug.Log("Init, dna list count: " + geneticData.Count);
         fitness = new List<float>();
+        Debug.Log("Init, fitness list count: " + fitness.Count);
         matingPool = new List<DNA>();
+        Debug.Log("Init, mating pool count: " + matingPool.Count);
         for(int i = 0; i < populationSize; ++i)
         {
             geneticData.Add(new DNA());
@@ -39,11 +43,12 @@ public class Population : MonoBehaviour {
             cars.Add(thisCar);
             GetComponent<Camera>().car = cars[index].transform;
         }
+        Debug.Log("Count of cars after population: " + cars.Count);
     }
 
     private void Update()
     {
-        // Debug.Log("Cars length: " + cars.Count);
+        Debug.Log("Cars count in update: " + cars.Count);
         if (index == populationSize)
         {
             Evaluate();
@@ -71,7 +76,7 @@ public class Population : MonoBehaviour {
             // Finding maximum fitness to normalize
             if (fitness[i] > maxFit) maxFit = fitness[i];
         }
-
+        Debug.Log("Maximum fitness of this generation is: " + maxFit);
         for(int i = 0; i < populationSize; ++i)
         {
             fitness[i] /= maxFit;
