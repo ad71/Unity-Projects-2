@@ -60,7 +60,7 @@ public class Population : MonoBehaviour {
     {
         if (index == populationSize)
         {
-            SaveFitness();
+            SaveTrackRecord();
             Evaluate();
             Select();
             // SaveGenes();
@@ -107,16 +107,16 @@ public class Population : MonoBehaviour {
         writer.Close();
     }
 
-    private void SaveFitness()
+    private void SaveTrackRecord()
     {
         string filepath = @"C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Assets\Data\fitness.txt";
-        StreamWriter writer = new StreamWriter(filepath);
+        StreamWriter writer = File.AppendText(filepath);
         string output = "";
         Debug.Log("Cars count in savefitness function: " + cars.Count);
         for(int i = 0; i < fitness.Count; ++i)
         {
             output = "";
-            output += i.ToString() + "," + fitness[i].ToString();
+            output += (((generation - 1) * populationSize) + i).ToString() + "," + (120000 - fitness[i]).ToString();
             writer.WriteLine(output);
         }
         writer.Close();

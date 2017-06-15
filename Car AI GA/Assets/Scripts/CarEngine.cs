@@ -54,6 +54,7 @@ public class CarEngine : MonoBehaviour {
     [SerializeField] private DNA dna;
     [SerializeField] private static int timeOut = 120000;
     // Change GUI output of maximum fitness for generation in Population.cs if timeOut value is changed
+    // Also change timeOut value in the function SaveTrackRecord() in Population.cs if timeOut value is changed
 
     private void Init(DNA dna)
     {
