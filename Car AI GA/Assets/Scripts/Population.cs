@@ -12,6 +12,8 @@ public class Population : MonoBehaviour {
     public bool verbose = false;
     public bool debug = true;
     public Text timeText;
+    public Text genomeText;
+    public Text generationText;
 
     private List<DNA> geneticData;
     public static List<float> fitness;
@@ -68,6 +70,8 @@ public class Population : MonoBehaviour {
         else
         {
             timeText.text = cars[index].GetComponent<CarEngine>().sw.ElapsedMilliseconds.ToString();
+            genomeText.text = "Genome: " + (index + 1).ToString();
+            generationText.text = "Generation: " + generation.ToString();
         }
     }
 
