@@ -9,6 +9,7 @@ public class Population : MonoBehaviour {
     public Transform path;
     public GameObject car;
     public bool verbose = false;
+    public bool debug = true;
 
     private List<DNA> geneticData;
     public static List<float> fitness;
@@ -25,13 +26,13 @@ public class Population : MonoBehaviour {
     private void Start()
     {
         cars = new List<GameObject>();
-        Debug.Log("Init, gameobject array cars count: " + cars.Count);
+        if (debug) Debug.Log("Init, gameobject array cars count: " + cars.Count);
         geneticData = new List<DNA>();
-        Debug.Log("Init, dna list count: " + geneticData.Count);
+        if (debug) Debug.Log("Init, dna list count: " + geneticData.Count);
         fitness = new List<float>();
-        Debug.Log("Init, fitness list count: " + fitness.Count);
+        if (debug) Debug.Log("Init, fitness list count: " + fitness.Count);
         matingPool = new List<DNA>();
-        Debug.Log("Init, mating pool count: " + matingPool.Count);
+        if (debug) Debug.Log("Init, mating pool count: " + matingPool.Count);
         for(int i = 0; i < populationSize; ++i)
         {
             geneticData.Add(new DNA());
@@ -43,9 +44,12 @@ public class Population : MonoBehaviour {
             cars.Add(thisCar);
             GetComponent<Camera>().car = cars[index].transform;
         }
-        Debug.Log("Count of cars after population: " + cars.Count);
-        Debug.Log("Genes of the first car: " + cars[0].GetComponent<CarEngine>().getDna().genes[0] + " " + cars[0].GetComponent<CarEngine>().getDna().genes[1]);
-        Debug.Log("Genes of the second car: " + cars[1].GetComponent<CarEngine>().getDna().genes[0] + " " + cars[1].GetComponent<CarEngine>().getDna().genes[1]);
+        if (debug)
+        {
+            Debug.Log("Count of cars after population: " + cars.Count);
+            Debug.Log("Genes of the first car: " + cars[0].GetComponent<CarEngine>().getDna().genes[0] + " " + cars[0].GetComponent<CarEngine>().getDna().genes[1]);
+            Debug.Log("Genes of the second car: " + cars[1].GetComponent<CarEngine>().getDna().genes[0] + " " + cars[1].GetComponent<CarEngine>().getDna().genes[1]);
+        }
     }
 
     private void Update()
@@ -66,7 +70,7 @@ public class Population : MonoBehaviour {
 
     private void Evaluate()
     {
-            Debug.Log("In evaluate");
+        if (debug) Debug.Log("In evaluate");
         index = 0;
         generation++;
         float maxFit = 0;
@@ -77,17 +81,17 @@ public class Population : MonoBehaviour {
             // Finding maximum fitness to normalize
             if (fitness[i] > maxFit) maxFit = fitness[i];
         }
-        Debug.Log("Maximum fitness of this generation is: " + maxFit);
+        if (debug) Debug.Log("Maximum fitness of this generation is: " + maxFit);
         for(int i = 0; i < populationSize; ++i)
         {
             fitness[i] /= maxFit;
-                Debug.Log("Normalized fitness: " + fitness[i]);
+            if (debug) Debug.Log("Normalized fitness: " + fitness[i]);
         }
 
         matingPool = new List<DNA>();
         // The 'not so efficient' way of adding DNA to the matingPool
         // Refactor this to use the monte carlo method
-            Debug.Log("Filling Mating pool");
+        if (debug) Debug.Log("Filling Mating pool");
         for (int i = 0; i < populationSize; ++i)
         {
             int n = (int) Mathf.Floor(fitness[i] * 100);
@@ -97,33 +101,39 @@ public class Population : MonoBehaviour {
             }
         }
         if (matingPool.Count < 1) Debug.Log("Mating pool empty");
-            Debug.Log("Mating pool size: " + matingPool.Count);
+        if (debug) Debug.Log("Mating pool size: " + matingPool.Count);
     }
 
     private void Select()
     {
-            Debug.Log("In select");
+        if (debug) Debug.Log("In select");
         cars = new List<GameObject>();
-            Debug.Log("Cars count: " + cars.Count);
+        if (debug) Debug.Log("Cars count: " + cars.Count);
         // List<DNA> newDna = new List<DNA>();
         for (int i = 0; i < populationSize; ++i)
         {
             // To do: prevent both parents from being the same
 
             int indexA = Random.Range(0, matingPool.Count - 1);
-                Debug.Log("IndexA: " + indexA);
+            if (debug) Debug.Log("IndexA: " + indexA);
             int indexB = Random.Range(0, matingPool.Count - 1);
-                Debug.Log("IndexB: " + indexB);
+            if (debug) Debug.Log("IndexB: " + indexB);
             DNA parentA = matingPool[indexA];
             if (parentA == null) Debug.Log("ParentA is null");
+            if (debug)
+            {
                 Debug.Log("ParentA genes length: " + parentA.genes.Count);
                 Debug.Log("ParentA genes: " + parentA.genes[0] + " " + parentA.genes[1]);
+            }
             DNA parentB = matingPool[indexB];
             if (parentB == null) Debug.Log("ParentB is null");
+            if (debug)
+            {
                 Debug.Log("ParentB genes length: " + parentB.genes.Count);
                 Debug.Log("ParentB genes: " + parentB.genes[0] + " " + parentB.genes[1]);
+            }
             DNA child = parentA.Crossover(parentB);
-            if (child == null) Debug.Log("Child is null");
+            if (child == null && debug) Debug.Log("Child is null");
             // child.Mutate();
             // Debug.Log("Mutation done");
             GameObject thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
@@ -131,15 +141,15 @@ public class Population : MonoBehaviour {
             thisEngine.setDna(child);
             thisEngine.path = path;
             thisEngine.verbose = verbose;
-            if (thisCar == null) Debug.Log("This car is null");
-                Debug.Log("Control reaches here");
+            if (thisCar == null && debug) Debug.Log("This car is null");
+            if (debug) Debug.Log("Control reaches here");
             cars.Add(thisCar);
-                Debug.Log("Cars count in Select function: " + cars.Count);
+            if (debug) Debug.Log("Cars count in Select function: " + cars.Count);
             GetComponent<Camera>().car = cars[index].transform;
         }
         fitness = new List<float>();
         matingPool = new List<DNA>();
         index = 0;
-        Debug.Log("Generation: " + generation);
+        if (debug) Debug.Log("Generation: " + generation);
     }
 }

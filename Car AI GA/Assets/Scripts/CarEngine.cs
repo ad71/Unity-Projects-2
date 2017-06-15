@@ -51,29 +51,29 @@ public class CarEngine : MonoBehaviour {
     private bool avoiding = false;
     private float targetSteerAngle = 0f;
     private DNA dna;
-    private static int timeOut = 120000;
+    [SerializeField] private static int timeOut = 120000;
 
     private void Init(DNA dna)
     {
-        maxSteerAngle = Mathf.Lerp(20f, 50f, dna.genes[0]);
-        topSpeed = Mathf.Lerp(50f, 150f, dna.genes[1]);
-        maxMotorTorque = Mathf.Lerp(50f, 200f, dna.genes[2]);
-        maxBrakingTorque = Mathf.Lerp(50f, 400f, dna.genes[3]);
-        centerofMass = new Vector3(0, Mathf.Lerp(-0.25f, 0.25f, dna.genes[4]), 0);
-        mass = Mathf.Lerp(500f, 1500f, dna.genes[5]);
+        maxSteerAngle =                     Mathf.Lerp(20f, 50f, dna.genes[0]);
+        topSpeed =                          Mathf.Lerp(50f, 150f, dna.genes[1]);
+        maxMotorTorque =                    Mathf.Lerp(50f, 200f, dna.genes[2]);
+        maxBrakingTorque =                  Mathf.Lerp(50f, 400f, dna.genes[3]);
+        centerofMass =                      new Vector3(0, Mathf.Lerp(-0.25f, 0.25f, dna.genes[4]), 0);
+        mass =                              Mathf.Lerp(500f, 1500f, dna.genes[5]);
         // Sensors do not matter now, as we are trying to find the global minima of time taken to traverse the track
-        sensorLength = Mathf.Lerp(1f, 5f, dna.genes[6]);
-        sensorSkewAngle = Mathf.Lerp(20f, 70f, dna.genes[7]);
-        if (Random.Range(0f, 1f) < dna.genes[8]) fourWheelDrive = true;
-        if (Random.Range(0f, 1f) < dna.genes[9]) fourWheelBrake = true;
-        if (10f * Random.Range(0f, 1f) < dna.genes[10]) fourWheelTurn = true;
-        switchToNextwaypointDistance = Mathf.Lerp(1f, 7f, dna.genes[11]);
-        if (Random.Range(0f, 1f) < dna.genes[12]) doesNotGiveAFuck = true;
-        brakeTopSpeedMultiplier = Mathf.Lerp(0.2f, 0.75f, dna.genes[13]);
-        brakeSteerMultiplier = Mathf.Lerp(0.2f, 0.75f, dna.genes[14]);
-        avoidMultiplierMultiplier = Mathf.Lerp(0.5f, 1f, dna.genes[15]);
-        if (Random.Range(0f, 1f) < dna.genes[16]) doesItLerp = true;
-        turningSpeed = Mathf.Lerp(2f, 10f, dna.genes[17]);
+        sensorLength =                      Mathf.Lerp(1f, 5f, dna.genes[6]);
+        sensorSkewAngle =                   Mathf.Lerp(20f, 70f, dna.genes[7]);
+        if (Random.Range(0f, 1f) < dna.genes[8])            fourWheelDrive = true;
+        if (Random.Range(0f, 1f) < dna.genes[9])            fourWheelBrake = true;
+        if (10f * Random.Range(0f, 1f) < dna.genes[10])     fourWheelTurn = true;
+        switchToNextwaypointDistance =      Mathf.Lerp(1f, 7f, dna.genes[11]);
+        if (Random.Range(0f, 1f) < dna.genes[12])           doesNotGiveAFuck = true;
+        brakeTopSpeedMultiplier =           Mathf.Lerp(0.2f, 0.75f, dna.genes[13]);
+        brakeSteerMultiplier =              Mathf.Lerp(0.2f, 0.75f, dna.genes[14]);
+        avoidMultiplierMultiplier =         Mathf.Lerp(0.5f, 1f, dna.genes[15]);
+        if (Random.Range(0f, 1f) < dna.genes[16])           doesItLerp = true;
+        turningSpeed =                      Mathf.Lerp(2f, 10f, dna.genes[17]);
 
         if (verbose)
         {
@@ -130,7 +130,6 @@ public class CarEngine : MonoBehaviour {
             {
                 timeRecorded = true;
                 Population.index+=1;
-                // UnityEngine.Debug.Log(Population.index);
                 gameObject.SetActive(false);
             }
         }
@@ -158,7 +157,6 @@ public class CarEngine : MonoBehaviour {
         if (avoiding) return;
         Vector3 relative = this.transform.InverseTransformPoint(nodes[current].position);
         float steer = (relative.x / relative.magnitude) * maxSteerAngle;
-        // if(lerpToSteerAngle?)
         if (doesItLerp)
         {
             targetSteerAngle = steer;
@@ -182,7 +180,6 @@ public class CarEngine : MonoBehaviour {
         {
             wheelrl.motorTorque = maxMotorTorque;
             wheelrr.motorTorque = maxMotorTorque;
-            // to do: Mutation might make it 4x4
             if (fourWheelDrive)
             {
                 wheelfr.motorTorque = maxMotorTorque;
@@ -212,7 +209,6 @@ public class CarEngine : MonoBehaviour {
 
     private void Brake()
     {
-        // to do: Mutation might apply brakes on all four wheels
         if (isBraking)
         {
             carTextureRenderer.material.mainTexture = braking;
@@ -239,7 +235,6 @@ public class CarEngine : MonoBehaviour {
 
     private void Check()
     {
-        // To check braking conditions
         if (currentSpeed > brakeTopSpeedMultiplier * topSpeed && wheelfl.steerAngle > brakeSteerMultiplier * maxSteerAngle) isBraking = true;
         else isBraking = false;
     }
@@ -317,7 +312,6 @@ public class CarEngine : MonoBehaviour {
 
         if (avoiding)
         {
-            // if(lerpToSteerangle?)
             if (doesItLerp)
                 targetSteerAngle = maxSteerAngle * avoidMultiplier;
 
@@ -331,7 +325,6 @@ public class CarEngine : MonoBehaviour {
                     wheelrl.steerAngle = -maxSteerAngle * avoidMultiplier;
                 }
             }
-            // To do: Mutation might allow turning of rear wheels
         }
     }
 
@@ -339,8 +332,7 @@ public class CarEngine : MonoBehaviour {
     {
         wheelfl.steerAngle = Mathf.Lerp(wheelfl.steerAngle, targetSteerAngle, Time.deltaTime * turningSpeed);
         wheelfr.steerAngle = Mathf.Lerp(wheelfl.steerAngle, targetSteerAngle, Time.deltaTime * turningSpeed);
-
-        // if rear wheels can turn,
+        
         if (fourWheelTurn)
         {
             wheelrr.steerAngle = Mathf.Lerp(wheelrr.steerAngle, -targetSteerAngle, Time.deltaTime * turningSpeed);
