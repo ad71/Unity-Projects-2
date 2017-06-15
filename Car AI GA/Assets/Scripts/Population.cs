@@ -53,7 +53,7 @@ public class Population : MonoBehaviour {
             Debug.Log("Genes of the first car: " + cars[0].GetComponent<CarEngine>().getDna().genes[0] + " " + cars[0].GetComponent<CarEngine>().getDna().genes[1]);
             Debug.Log("Genes of the second car: " + cars[1].GetComponent<CarEngine>().getDna().genes[0] + " " + cars[1].GetComponent<CarEngine>().getDna().genes[1]);
         }
-        Save();
+        SaveGenes();
     }
 
     private void Update()
@@ -62,7 +62,8 @@ public class Population : MonoBehaviour {
         {
             Evaluate();
             Select();
-            Save();
+            SaveGenes();
+            SaveFitness();
         }
         if (cars[index].GetComponent<CarEngine>().sw.IsRunning == false)
         {
@@ -88,10 +89,10 @@ public class Population : MonoBehaviour {
         // if (GUI.Button(new Rect(3, 70, 100, 25), "Save")) Save();
     // }
 
-    private void Save()
+    private void SaveGenes()
     {
-        string path = @"C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Assets\Data\data.txt";
-        StreamWriter writer = File.AppendText(path);
+        string filepath = @"C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Assets\Data\data.txt";
+        StreamWriter writer = File.AppendText(filepath);
         string output = "";
         Debug.Log("Cars count in save function: " + cars.Count);
         for(int i = 0; i < cars.Count; ++i)
@@ -101,6 +102,21 @@ public class Population : MonoBehaviour {
             {
                 output += cars[i].GetComponent<CarEngine>().getDna().genes[j]+",";
             }
+            writer.WriteLine(output);
+        }
+        writer.Close();
+    }
+
+    private void SaveFitness()
+    {
+        string filepath = @"C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Assets\Data\fitness.txt";
+        StreamWriter writer = File.AppendText(filepath);
+        string output = "";
+        Debug.Log("Cars count in savefitness function: " + cars.Count);
+        for(int i = 0; i < this.populationSize; ++i)
+        {
+            output = "";
+            output += fitness[i].ToString() + ",";
             writer.WriteLine(output);
         }
         writer.Close();
