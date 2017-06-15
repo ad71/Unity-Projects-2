@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Population : MonoBehaviour {
 
-    private int populationSize = 5;
+    private int populationSize = 2;
     public int generation = 1;
     public Transform path;
     public GameObject car;
@@ -16,12 +16,8 @@ public class Population : MonoBehaviour {
     // Improve matingPool system and replace it with monteCarlo method probably
     private List<DNA> matingPool;
     public static int index = 0;
-    // private bool timed = false;
     public static float tempWeakness = -1f;
     private List<GameObject> cars;
-      ////////////////////////////////////////////////////////
-     /// Do not forget to assign camera to follow new car ///
-    ////////////////////////////////////////////////////////
 
     private void Start()
     {
@@ -59,7 +55,7 @@ public class Population : MonoBehaviour {
             Evaluate();
             Select();
         }
-        if (cars[index].GetComponent<CarEngine>().sw.ElapsedMilliseconds == 0)
+        if (cars[index].GetComponent<CarEngine>().sw.IsRunning == false)
         {
             // Cannot start stopwatch in the CarEngine class as it starts for cars that are not yet active and gives funny results
             cars[index].GetComponent<CarEngine>().sw.Start();
