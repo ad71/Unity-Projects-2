@@ -80,27 +80,27 @@ public class Population : MonoBehaviour {
         // GUIData();
     }
 
-    private void OnGUI()
-    {
+    // private void OnGUI()
+    // {
         // if (GUI.Button(new Rect(3, 50, 100, 25), "Kill"))
         // Kill();
         // if (GUI.Button(new Rect(3, 70, 100, 25), "Save")) Save();
-    }
+    // }
 
     private void Save()
     {
         string path = @"C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Assets\Data\data.txt";
         StreamWriter writer = File.AppendText(path);
         string output = "";
-        /*foreach (GameObject car in cars)
+        for(int i = 0; i < cars.Count; ++i)
         {
-            for(int i = 0; i < car.GetComponent<CarEngine>().getDna().genes.Count; ++index)
+            output = "";
+            for(int j = 0; j < cars[i].GetComponent<CarEngine>().getDna().genes.Count; ++j)
             {
-                output += car.GetComponent<CarEngine>().getDna().genes[i].ToString() + ",";
+                output += cars[i].GetComponent<CarEngine>().getDna().genes[j]+",";
             }
-            output += "\n";
-        }*/
-        writer.WriteLine(output);
+            writer.WriteLine(output);
+        }
         writer.Close();
     }
 
