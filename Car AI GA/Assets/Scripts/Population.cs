@@ -75,6 +75,7 @@ public class Population : MonoBehaviour {
             genomeText.text = "Genome: " + (index + 1).ToString();
             generationText.text = "Generation: " + generation.ToString();
         }
+        // GUIData();
     }
 
     /* private void OnGUI()
@@ -92,11 +93,11 @@ public class Population : MonoBehaviour {
         for (int i = 0; i < this.populationSize; ++i)
         {
             // For the ones timed-out, a small probability is added
-            if (fitness[i] < 0) fitness[i] = 100;
+            if (fitness[i] < 0) fitness[i] = 1000;
             // Finding maximum fitness to normalize
             if (fitness[i] > maxFit) maxFit = fitness[i];
         }
-        maxFitnessText.text = "Minimum: " + (120000f - maxFit) / 1000f + " s";
+        maxFitnessText.text = "Gen" + generation.ToString() + " minimum: " + (120000f - maxFit) / 1000f + " s";
         if (debug) Debug.Log("Maximum fitness of this generation is: " + maxFit);
         for(int i = 0; i < populationSize; ++i)
         {
@@ -173,4 +174,15 @@ public class Population : MonoBehaviour {
     {
         Debug.Log("In kill");
     }
+
+    /* private void GUIData()
+    {
+        float maxFit = 0f;
+        for (int i = 0; i < fitness.Count; ++i)
+        {
+            if (fitness[i] < 0) fitness[i] = 1000;
+            if (fitness[i] > maxFit) maxFit = fitness[i];
+        }
+        if (fitness.Count > 0) maxFitnessText.text = "Minimum: " + (120000 - maxFit) / 1000f + "s";
+    } */
 }
