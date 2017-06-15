@@ -99,7 +99,7 @@ public class CarEngine : MonoBehaviour {
             UnityEngine.Debug.Log("Turning speed: " + turningSpeed);
         }
     }
-
+    
     private void Start()
     {
         timeRecorded = false;
@@ -209,6 +209,11 @@ public class CarEngine : MonoBehaviour {
             //else current++;
             current++;
         }
+        if (Vector3.Distance(this.transform.position, nodes[current].position) > Vector3.Distance(this.transform.position, nodes[current + 1].position))
+        {
+            current++;
+        }
+        UnityEngine.Debug.DrawLine(this.transform.position, nodes[current].position);
     }
 
     private void Brake()
