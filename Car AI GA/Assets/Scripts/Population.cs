@@ -60,8 +60,9 @@ public class Population : MonoBehaviour {
             // Cannot start stopwatch in the CarEngine class as it starts for cars that are not yet active and gives funny results
             cars[index].GetComponent<CarEngine>().sw.Start();
             GetComponent<Camera>().car = cars[index].transform;
+            cars[index].SetActive(true);
         }
-        cars[index].SetActive(true);
+        // If cars don't activate, put the last line of the previous if statement below this comment
     }
 
     private void Evaluate()
