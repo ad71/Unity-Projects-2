@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Population : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class Population : MonoBehaviour {
     public GameObject car;
     public bool verbose = false;
     public bool debug = true;
+    public Text timeText;
 
     private List<DNA> geneticData;
     public static List<float> fitness;
@@ -63,6 +65,10 @@ public class Population : MonoBehaviour {
             cars[index].SetActive(true);
         }
         // If cars don't activate, put the last line of the previous if statement below this comment
+        else
+        {
+            timeText.text = cars[index].GetComponent<CarEngine>().sw.ElapsedMilliseconds.ToString();
+        }
     }
 
     private void Evaluate()
