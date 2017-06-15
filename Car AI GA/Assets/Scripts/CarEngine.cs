@@ -106,8 +106,8 @@ public class CarEngine : MonoBehaviour {
         for (int i = 0; i < pathTransforms.Length; ++i)
             if (pathTransforms[i] != path.transform)
                 nodes.Add(pathTransforms[i]);
-        dna = new DNA();
-        Init(dna);
+        // dna = new DNA();
+        // Init(dna);
         GetComponent<Rigidbody>().centerOfMass = centerofMass;
         GetComponent<Rigidbody>().mass = mass;
         sw = new Stopwatch();

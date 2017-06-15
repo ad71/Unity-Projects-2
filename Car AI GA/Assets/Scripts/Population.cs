@@ -124,8 +124,8 @@ public class Population : MonoBehaviour {
                 Debug.Log("ParentB genes: " + parentB.genes[0] + " " + parentB.genes[1]);
             DNA child = parentA.Crossover(parentB);
             if (child == null) Debug.Log("Child is null");
-            child.Mutate();
-            Debug.Log("Mutation done");
+            // child.Mutate();
+            // Debug.Log("Mutation done");
             GameObject thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
             CarEngine thisEngine = thisCar.GetComponent<CarEngine>();
             thisEngine.setDna(child);
@@ -140,5 +140,6 @@ public class Population : MonoBehaviour {
         fitness = new List<float>();
         matingPool = new List<DNA>();
         index = 0;
+        Debug.Log("Generation: " + generation);
     }
 }
