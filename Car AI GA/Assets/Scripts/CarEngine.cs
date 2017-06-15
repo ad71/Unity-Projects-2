@@ -47,10 +47,10 @@ public class CarEngine : MonoBehaviour {
 
     private List<Transform> nodes;
     public Stopwatch sw;
-    private int current = 0;
+    [SerializeField] private int current = 0;
     private bool avoiding = false;
     private float targetSteerAngle = 0f;
-    private DNA dna;
+    [SerializeField] private DNA dna;
     [SerializeField] private static int timeOut = 120000;
 
     private void Init(DNA dna)
@@ -202,8 +202,9 @@ public class CarEngine : MonoBehaviour {
     {
         if (Vector3.Distance(this.transform.position, nodes[current].position) < switchToNextwaypointDistance)
         {
-            if (current == nodes.Count - 1) current = 0;
-            else current++;
+            //if (current == nodes.Count - 1) current = 0;
+            //else current++;
+            current++;
         }
     }
 
