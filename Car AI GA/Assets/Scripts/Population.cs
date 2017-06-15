@@ -15,7 +15,7 @@ public class Population : MonoBehaviour {
     // Improve matingPool system and replace it with monteCarlo method probably
     private List<DNA> matingPool;
     public static int index = 0;
-    private bool timed = false;
+    // private bool timed = false;
     public static float tempWeakness = -1f;
     private List<GameObject> cars;
       ////////////////////////////////////////////////////////
@@ -105,7 +105,7 @@ public class Population : MonoBehaviour {
             Debug.Log("In select");
         cars = new List<GameObject>();
             Debug.Log("Cars count: " + cars.Count);
-        List<DNA> newDna = new List<DNA>();
+        // List<DNA> newDna = new List<DNA>();
         for (int i = 0; i < populationSize; ++i)
         {
             // To do: prevent both parents from being the same
@@ -129,7 +129,6 @@ public class Population : MonoBehaviour {
             GameObject thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
             CarEngine thisEngine = thisCar.GetComponent<CarEngine>();
             thisEngine.setDna(child);
-            thisEngine.Init(child);
             thisEngine.path = path;
             thisEngine.verbose = verbose;
             if (thisCar == null) Debug.Log("This car is null");
