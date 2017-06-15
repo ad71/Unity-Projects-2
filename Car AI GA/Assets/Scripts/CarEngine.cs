@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Diagnostics;
+using UnityEngine.UI;
 
 public class CarEngine : MonoBehaviour {
 
@@ -14,6 +15,7 @@ public class CarEngine : MonoBehaviour {
     public bool verbose = false;
     public bool timeRecorded = false;
     public float weakness = -1f;
+    //public Text timerText;
 
     [Header("Genetic Data")]
     [SerializeField] private Vector3 centerofMass;
@@ -129,10 +131,11 @@ public class CarEngine : MonoBehaviour {
             if (!timeRecorded)
             {
                 timeRecorded = true;
-                Population.index+=1;
+                Population.index += 1;
                 gameObject.SetActive(false);
             }
         }
+        //else timerText.text = sw.ElapsedMilliseconds.ToString();
     }
 
     private void FixedUpdate()

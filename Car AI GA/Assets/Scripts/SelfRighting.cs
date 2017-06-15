@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SelfRighting : MonoBehaviour {
 
-    [SerializeField] private float waitTime = 3f;
+    [SerializeField] private float waitTime = 2f;
     [SerializeField] private float velocityThreshold = 1f;
 
     private float lastOKTime;

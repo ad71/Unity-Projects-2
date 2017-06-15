@@ -134,8 +134,8 @@ public class Population : MonoBehaviour {
             }
             DNA child = parentA.Crossover(parentB);
             if (child == null && debug) Debug.Log("Child is null");
-            // child.Mutate();
-            // Debug.Log("Mutation done");
+            child.Mutate();
+            if (debug) Debug.Log("Mutation done");
             GameObject thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
             CarEngine thisEngine = thisCar.GetComponent<CarEngine>();
             thisEngine.setDna(child);
