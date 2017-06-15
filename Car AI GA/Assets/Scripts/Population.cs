@@ -129,6 +129,7 @@ public class Population : MonoBehaviour {
             GameObject thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
             CarEngine thisEngine = thisCar.GetComponent<CarEngine>();
             thisEngine.setDna(child);
+            thisEngine.Init(child);
             thisEngine.path = path;
             thisEngine.verbose = verbose;
             if (thisCar == null) Debug.Log("This car is null");

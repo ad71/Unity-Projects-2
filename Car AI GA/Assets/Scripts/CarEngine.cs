@@ -53,7 +53,7 @@ public class CarEngine : MonoBehaviour {
     private DNA dna;
     private static int timeOut = 120000;
 
-    private void Init(DNA dna)
+    public void Init(DNA dna)
     {
         maxSteerAngle = Mathf.Lerp(20f, 50f, dna.genes[0]);
         topSpeed = Mathf.Lerp(50f, 150f, dna.genes[1]);
