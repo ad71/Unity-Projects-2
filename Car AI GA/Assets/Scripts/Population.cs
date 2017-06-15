@@ -53,6 +53,7 @@ public class Population : MonoBehaviour {
             Debug.Log("Genes of the first car: " + cars[0].GetComponent<CarEngine>().getDna().genes[0] + " " + cars[0].GetComponent<CarEngine>().getDna().genes[1]);
             Debug.Log("Genes of the second car: " + cars[1].GetComponent<CarEngine>().getDna().genes[0] + " " + cars[1].GetComponent<CarEngine>().getDna().genes[1]);
         }
+        Save();
     }
 
     private void Update()
@@ -92,6 +93,7 @@ public class Population : MonoBehaviour {
         string path = @"C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Assets\Data\data.txt";
         StreamWriter writer = File.AppendText(path);
         string output = "";
+        Debug.Log("Cars count in save function: " + cars.Count);
         for(int i = 0; i < cars.Count; ++i)
         {
             output = "";
