@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class Population : MonoBehaviour {
 
@@ -78,11 +79,20 @@ public class Population : MonoBehaviour {
         // GUIData();
     }
 
-    /* private void OnGUI()
+    private void OnGUI()
     {
-        if (GUI.Button(new Rect(3, 50, 100, 25), "Kill"))
-            Kill();
-    } */
+        // if (GUI.Button(new Rect(3, 50, 100, 25), "Kill"))
+        // Kill();
+        if (GUI.Button(new Rect(3, 70, 100, 25), "Save")) Save();
+    }
+
+    private void Save()
+    {
+        StreamWriter writer = new StreamWriter(@"C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Assets\Data\data.txt");
+        string output = "Haha! Fuck You!";
+        writer.WriteLine(output);
+        writer.Close();
+    }
 
     private void Evaluate()
     {
