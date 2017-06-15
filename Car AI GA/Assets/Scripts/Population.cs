@@ -53,17 +53,17 @@ public class Population : MonoBehaviour {
             Debug.Log("Genes of the first car: " + cars[0].GetComponent<CarEngine>().getDna().genes[0] + " " + cars[0].GetComponent<CarEngine>().getDna().genes[1]);
             Debug.Log("Genes of the second car: " + cars[1].GetComponent<CarEngine>().getDna().genes[0] + " " + cars[1].GetComponent<CarEngine>().getDna().genes[1]);
         }
-        SaveGenes();
+        // SaveGenes();
     }
 
     private void Update()
     {
         if (index == populationSize)
         {
+            SaveFitness();
             Evaluate();
             Select();
-            SaveGenes();
-            SaveFitness();
+            // SaveGenes();
         }
         if (cars[index].GetComponent<CarEngine>().sw.IsRunning == false)
         {
@@ -110,13 +110,13 @@ public class Population : MonoBehaviour {
     private void SaveFitness()
     {
         string filepath = @"C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Assets\Data\fitness.txt";
-        StreamWriter writer = File.AppendText(filepath);
+        StreamWriter writer = new StreamWriter(filepath);
         string output = "";
         Debug.Log("Cars count in savefitness function: " + cars.Count);
-        for(int i = 0; i < this.populationSize; ++i)
+        for(int i = 0; i < fitness.Count; ++i)
         {
             output = "";
-            output += fitness[i].ToString() + ",";
+            output += i.ToString() + "," + fitness[i].ToString();
             writer.WriteLine(output);
         }
         writer.Close();
