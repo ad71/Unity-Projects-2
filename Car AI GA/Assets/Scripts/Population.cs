@@ -61,6 +61,7 @@ public class Population : MonoBehaviour {
         {
             Evaluate();
             Select();
+            // Save();
         }
         if (cars[index].GetComponent<CarEngine>().sw.IsRunning == false)
         {
@@ -88,8 +89,9 @@ public class Population : MonoBehaviour {
 
     private void Save()
     {
-        StreamWriter writer = new StreamWriter(@"C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Assets\Data\data.txt");
-        string output = "Haha! Fuck You!";
+        string path = @"C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Assets\Data\data.txt";
+        StreamWriter writer = File.AppendText(path);
+        string output = "Please don't!";
         writer.WriteLine(output);
         writer.Close();
     }
