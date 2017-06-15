@@ -61,7 +61,7 @@ public class Population : MonoBehaviour {
         {
             Evaluate();
             Select();
-            // Save();
+            Save();
         }
         if (cars[index].GetComponent<CarEngine>().sw.IsRunning == false)
         {
@@ -91,7 +91,15 @@ public class Population : MonoBehaviour {
     {
         string path = @"C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Assets\Data\data.txt";
         StreamWriter writer = File.AppendText(path);
-        string output = "Please don't!";
+        string output = "";
+        foreach (GameObject car in cars)
+        {
+            for(int i = 0; i < car.GetComponent<CarEngine>().getDna().genes.Count; ++index)
+            {
+                output += car.GetComponent<CarEngine>().getDna().genes[i].ToString() + ",";
+            }
+            output += "\n";
+        }
         writer.WriteLine(output);
         writer.Close();
     }
