@@ -97,7 +97,7 @@ public class Population : MonoBehaviour {
             // Finding maximum fitness to normalize
             if (fitness[i] > maxFit) maxFit = fitness[i];
         }
-        maxFitnessText.text = "Gen" + generation.ToString() + " minimum: " + (120000f - maxFit) / 1000f + " s";
+        maxFitnessText.text = "Gen" + (generation - 1).ToString() + " minimum: " + (120000f - maxFit) / 1000f + " s";
         if (debug) Debug.Log("Maximum fitness of this generation is: " + maxFit);
         for(int i = 0; i < populationSize; ++i)
         {

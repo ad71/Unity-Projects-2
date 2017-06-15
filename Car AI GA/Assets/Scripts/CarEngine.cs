@@ -209,7 +209,7 @@ public class CarEngine : MonoBehaviour {
             //else current++;
             current++;
         }
-        if (Vector3.Distance(this.transform.position, nodes[current].position) > Vector3.Distance(this.transform.position, nodes[current + 1].position))
+        if (current < 20 && Vector3.Distance(this.transform.position, nodes[current].position) > Vector3.Distance(this.transform.position, nodes[current + 1].position))
         {
             current++;
         }
