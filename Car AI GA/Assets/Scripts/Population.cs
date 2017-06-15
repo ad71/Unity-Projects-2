@@ -14,6 +14,7 @@ public class Population : MonoBehaviour {
     public Text timeText;
     public Text genomeText;
     public Text generationText;
+    public Text maxFitnessText;
 
     private List<DNA> geneticData;
     public static List<float> fitness;
@@ -25,6 +26,7 @@ public class Population : MonoBehaviour {
 
     private void Start()
     {
+        maxFitnessText.text = "";
         cars = new List<GameObject>();
         if (debug) Debug.Log("Init, gameobject array cars count: " + cars.Count);
         geneticData = new List<DNA>();
@@ -75,6 +77,12 @@ public class Population : MonoBehaviour {
         }
     }
 
+    /* private void OnGUI()
+    {
+        if (GUI.Button(new Rect(3, 50, 100, 25), "Kill"))
+            Kill();
+    } */
+
     private void Evaluate()
     {
         if (debug) Debug.Log("In evaluate");
@@ -88,6 +96,7 @@ public class Population : MonoBehaviour {
             // Finding maximum fitness to normalize
             if (fitness[i] > maxFit) maxFit = fitness[i];
         }
+        maxFitnessText.text = "Minimum: " + (120000f - maxFit) / 1000f + " s";
         if (debug) Debug.Log("Maximum fitness of this generation is: " + maxFit);
         for(int i = 0; i < populationSize; ++i)
         {
@@ -158,5 +167,10 @@ public class Population : MonoBehaviour {
         matingPool = new List<DNA>();
         index = 0;
         if (debug) Debug.Log("Generation: " + generation);
+    }
+
+    private void Kill()
+    {
+        Debug.Log("In kill");
     }
 }
