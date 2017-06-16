@@ -53,7 +53,7 @@ public class Population : MonoBehaviour {
             Debug.Log("Genes of the first car: " + cars[0].GetComponent<CarEngine>().getDna().genes[0] + " " + cars[0].GetComponent<CarEngine>().getDna().genes[1]);
             Debug.Log("Genes of the second car: " + cars[1].GetComponent<CarEngine>().getDna().genes[0] + " " + cars[1].GetComponent<CarEngine>().getDna().genes[1]);
         }
-        // SaveGenes();
+        SaveGenes();
     }
 
     private void Update()
@@ -63,7 +63,7 @@ public class Population : MonoBehaviour {
             SaveTrackRecord();
             Evaluate();
             Select();
-            // SaveGenes();
+            SaveGenes();
         }
         if (cars[index].GetComponent<CarEngine>().sw.IsRunning == false)
         {
