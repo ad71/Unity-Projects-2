@@ -98,7 +98,7 @@ public class Population : MonoBehaviour {
         for(int i = 0; i < cars.Count; ++i)
         {
             output = "";
-            output += i.ToString() + ",";
+            output += (((generation - 1) * populationSize) + i).ToString() + ",";
             for(int j = 0; j < cars[i].GetComponent<CarEngine>().getDna().genes.Count; ++j)
             {
                 output += cars[i].GetComponent<CarEngine>().getDna().genes[j]+",";
