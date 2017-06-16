@@ -181,20 +181,27 @@ public class Population : MonoBehaviour {
                 Debug.Log("ParentA genes length: " + parentA.genes.Count);
                 Debug.Log("ParentA genes: " + parentA.genes[0] + " " + parentA.genes[1]);
             }
-            DNA parentB = new DNA();
+            DNA parentB = matingPool[indexB];
             if (parentB == null) Debug.Log("ParentB is null");
             if (debug)
             {
                 Debug.Log("ParentB genes length: " + parentB.genes.Count);
                 Debug.Log("ParentB genes: " + parentB.genes[0] + " " + parentB.genes[1]);
             }
+            // The incoming part prevents both the parents from being the same
             int pil = 0; // to prevent infinite loop
-            do
+            while (parentA == parentB && pil < 100)
             {
                 pil++;
                 int rb = Random.Range(0, matingPool.Count - 1);
                 parentB = matingPool[rb];
-            } while (parentA == parentB && pil < 100);
+            }
+            if (parentB == null) Debug.Log("ParentB is null after duplication prevention");
+            if (debug)
+            {
+                Debug.Log("ParentB genes length after duplication prevention: " + parentB.genes.Count);
+                Debug.Log("ParentB genes after duplication prevention: " + parentB.genes[0] + " " + parentB.genes[1]);
+            }
             DNA child = parentA.Crossover(parentB);
             if (child == null && debug) Debug.Log("Child is null");
             child.Mutate();
