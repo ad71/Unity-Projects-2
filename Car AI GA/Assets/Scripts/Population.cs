@@ -171,36 +171,43 @@ public class Population : MonoBehaviour {
             // To do: prevent both parents from being the same
 
             int indexA = Random.Range(0, matingPool.Count - 1);
-            if (debug) Debug.Log("IndexA: " + indexA);
+            // if (debug) Debug.Log("IndexA: " + indexA);
             int indexB = Random.Range(0, matingPool.Count - 1);
-            if (debug) Debug.Log("IndexB: " + indexB);
+            // if (debug) Debug.Log("IndexB: " + indexB);
             DNA parentA = matingPool[indexA];
-            if (parentA == null) Debug.Log("ParentA is null");
-            if (debug)
+            // if (parentA == null) Debug.Log("ParentA is null");
+            // if (debug)
+            // {
+                // Debug.Log("ParentA genes length: " + parentA.genes.Count);
+                // Debug.Log("ParentA genes: " + parentA.genes[0] + " " + parentA.genes[1]);
+            // }
+            DNA parentB = new DNA();
+            // if (parentB == null) Debug.Log("ParentB is null");
+            // if (debug)
+            // {
+                // Debug.Log("ParentB genes length: " + parentB.genes.Count);
+                // Debug.Log("ParentB genes: " + parentB.genes[0] + " " + parentB.genes[1]);
+            // }
+            int pil = 0; // to prevent infinite loop
+            do
             {
-                Debug.Log("ParentA genes length: " + parentA.genes.Count);
-                Debug.Log("ParentA genes: " + parentA.genes[0] + " " + parentA.genes[1]);
-            }
-            DNA parentB = matingPool[indexB];
-            if (parentB == null) Debug.Log("ParentB is null");
-            if (debug)
-            {
-                Debug.Log("ParentB genes length: " + parentB.genes.Count);
-                Debug.Log("ParentB genes: " + parentB.genes[0] + " " + parentB.genes[1]);
-            }
+                pil++;
+                int rb = Random.Range(0, matingPool.Count - 1);
+                parentB = matingPool[rb];
+            } while (parentA == parentB && pil < 100);
             DNA child = parentA.Crossover(parentB);
-            if (child == null && debug) Debug.Log("Child is null");
+            // if (child == null && debug) Debug.Log("Child is null");
             child.Mutate();
-            if (debug) Debug.Log("Mutation done");
+            // if (debug) Debug.Log("Mutation done");
             GameObject thisCar = Instantiate(car, new Vector3(0.5f, 10.038f, 0f), Quaternion.identity);
             CarEngine thisEngine = thisCar.GetComponent<CarEngine>();
             thisEngine.setDna(child);
             thisEngine.path = path;
             thisEngine.verbose = verbose;
-            if (thisCar == null && debug) Debug.Log("This car is null");
-            if (debug) Debug.Log("Control reaches here");
+            // if (thisCar == null && debug) Debug.Log("This car is null");
+            // if (debug) Debug.Log("Control reaches here");
             cars.Add(thisCar);
-            if (debug) Debug.Log("Cars count in Select function: " + cars.Count);
+            // if (debug) Debug.Log("Cars count in Select function: " + cars.Count);
             GetComponent<Camera>().car = cars[index].transform;
         }
         fitness = new List<float>();
