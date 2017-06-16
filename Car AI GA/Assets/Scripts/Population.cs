@@ -6,7 +6,7 @@ using System.IO;
 
 public class Population : MonoBehaviour {
 
-    private int populationSize = 2;
+    private int populationSize = 15;
     public int generation = 1;
     public Transform path;
     public GameObject car;
@@ -98,6 +98,7 @@ public class Population : MonoBehaviour {
         for(int i = 0; i < cars.Count; ++i)
         {
             output = "";
+            output += i.ToString() + ",";
             for(int j = 0; j < cars[i].GetComponent<CarEngine>().getDna().genes.Count; ++j)
             {
                 output += cars[i].GetComponent<CarEngine>().getDna().genes[j]+",";
