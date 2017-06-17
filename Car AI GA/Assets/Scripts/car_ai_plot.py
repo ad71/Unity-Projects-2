@@ -2,8 +2,13 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 from matplotlib import style
 import numpy as np
+import os
 
 style.use('ggplot')
+
+userhome = os.path.expanduser('~')
+filepath = userhome + "\\Desktop\\GA\\fitness.txt"
+# For debugging, use filepath 'C:\\Users\\Aman Deep Singh\\Documents\\Unity-2\\Car AI GA\\Assets\\Data\\fitness.txt'
 
 fig = plt.figure()
 ax1 = fig.add_subplot(1, 1, 1) # similar to octave's subplotting system
@@ -11,7 +16,7 @@ ax1 = fig.add_subplot(1, 1, 1) # similar to octave's subplotting system
 
 # An animation function is like a draw loop. It'll keep running and animating the plot
 def animate(i):
-	graph_data = open('C:\\Users\\Aman Deep Singh\\Documents\\Unity-2\\Car AI GA\\Assets\\Data\\fitness.txt', 'r').read()
+	graph_data = open(filepath, 'r').read()
 	lines = graph_data.split('\n')
 	xs = []
 	ys = []
