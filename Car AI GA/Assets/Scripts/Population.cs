@@ -6,7 +6,7 @@ using System.IO;
 
 public class Population : MonoBehaviour {
 
-    private int populationSize = 2;
+    private int populationSize = 15;
     public int generation = 1;
     public Transform path;
     public GameObject car;
