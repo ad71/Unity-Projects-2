@@ -18,15 +18,15 @@ public class SelfRighting : MonoBehaviour {
 	
 	// Update is called once per frame
 	private void Update () {
-		if (transform.up.y > 0f || rigidBody.velocity.magnitude > velocityThreshold)
+		/* if (transform.up.y > 0f || rigidBody.velocity.magnitude > velocityThreshold)
         {
             lastOKTime = Time.time;
         }
         if (Time.time > lastOKTime + waitTime)
         {
             RightCar();
-        }
-        if (rigidBody.velocity.magnitude < 1f)
+        } */
+        if (rigidBody.velocity.magnitude < 0.5f)
         {
             deadC++;
         }
@@ -35,7 +35,7 @@ public class SelfRighting : MonoBehaviour {
             RightCar();
             deadC = 0;
         }
-        Debug.Log("DeadC: " + deadC);
+        // Debug.Log("DeadC: " + deadC);
 	}
 
     private void RightCar()
