@@ -24,17 +24,31 @@ public class Population : MonoBehaviour {
     public static int index = 0;
     public static float tempWeakness = -1f;
     private List<GameObject> cars;
-    private string datafilepath = @"C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Assets\Data\data.txt";
-    private string fitnessfilepath = @"C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Assets\Data\fitness.txt";
+    private string datafilepath;
+    private string fitnessfilepath;
+    // private string datadirectorypath = @"C:\Program Files\GA\Data";
 
     private void Start()
     {
-        StreamWriter writer = new StreamWriter(datafilepath);
+        /* try
+        {
+            if (!Directory.Exists(datadirectorypath)) Directory.CreateDirectory(datadirectorypath);
+        }
+        catch (IOException e)
+        {
+            UnityEngine.Debug.Log("Error creating directory: " + e.Message);
+        }*/
+        DirectoryInfo info = Directory.CreateDirectory(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop) + "\\GA");
+        System.IO.File.WriteAllText(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop) + "\\GA\\data.txt", "");
+        System.IO.File.WriteAllText(System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop) + "\\GA\\fitness.txt", "");
+        datafilepath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop) + "\\GA\\data.txt";
+        fitnessfilepath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop) + "\\GA\\fitness.txt";
+        /* StreamWriter writer = new StreamWriter(datafilepath);
         writer.WriteLine("");
         writer.Close();
         writer = new StreamWriter(fitnessfilepath);
         writer.WriteLine("");
-        writer.Close();
+        writer.Close();*/
         maxFitnessText.text = "";
         cars = new List<GameObject>();
         if (debug) Debug.Log("Init, gameobject array cars count: " + cars.Count);
