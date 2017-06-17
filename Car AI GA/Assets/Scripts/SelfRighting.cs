@@ -9,10 +9,11 @@ public class SelfRighting : MonoBehaviour {
 
     private float lastOKTime;
     private Rigidbody rigidBody;
+    private int deadC = 0;
 
 	// Use this for initialization
 	private void Start () {
-        rigidBody = GetComponent<Rigidbody>();	
+        rigidBody = GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
@@ -25,6 +26,16 @@ public class SelfRighting : MonoBehaviour {
         {
             RightCar();
         }
+        if (rigidBody.velocity.magnitude < 1f)
+        {
+            deadC++;
+        }
+        if (deadC > 150)
+        {
+            RightCar();
+            deadC = 0;
+        }
+        Debug.Log("DeadC: " + deadC);
 	}
 
     private void RightCar()
