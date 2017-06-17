@@ -24,9 +24,17 @@ public class Population : MonoBehaviour {
     public static int index = 0;
     public static float tempWeakness = -1f;
     private List<GameObject> cars;
+    private string datafilepath = @"C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Assets\Data\data.txt";
+    private string fitnessfilepath = @"C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Assets\Data\fitness.txt";
 
     private void Start()
     {
+        StreamWriter writer = new StreamWriter(datafilepath);
+        writer.WriteLine("");
+        writer.Close();
+        writer = new StreamWriter(fitnessfilepath);
+        writer.WriteLine("");
+        writer.Close();
         maxFitnessText.text = "";
         cars = new List<GameObject>();
         if (debug) Debug.Log("Init, gameobject array cars count: " + cars.Count);
@@ -90,9 +98,8 @@ public class Population : MonoBehaviour {
     // }
 
     private void SaveGenes()
-    {
-        string filepath = @"C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Assets\Data\data.txt";
-        StreamWriter writer = File.AppendText(filepath);
+    {   
+        StreamWriter writer = File.AppendText(datafilepath);
         string output = "";
         Debug.Log("Cars count in save function: " + cars.Count);
         for(int i = 0; i < cars.Count; ++i)
@@ -110,8 +117,7 @@ public class Population : MonoBehaviour {
 
     private void SaveTrackRecord()
     {
-        string filepath = @"C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Assets\Data\fitness.txt";
-        StreamWriter writer = File.AppendText(filepath);
+        StreamWriter writer = File.AppendText(fitnessfilepath);
         string output = "";
         Debug.Log("Cars count in savefitness function: " + cars.Count);
         for(int i = 0; i < fitness.Count; ++i)
