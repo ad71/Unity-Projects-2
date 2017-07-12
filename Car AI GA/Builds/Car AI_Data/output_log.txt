@@ -17,14 +17,14 @@ Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Builds\C
 Loading C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Builds\Car AI_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Builds\Car AI_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Builds\Car AI_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.908 seconds
+- Completed reload, in  0.993 seconds
 Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Builds\Car AI_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Builds\Car AI_Data\Managed\System.dll (this message is harmless)
-desktop: 1366x768 60Hz; virtual: 2732x768 at -1366,0
+desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 56.544262 ms
+UnloadTime: 111.778366 ms
 Init, gameobject array cars count: 0
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
@@ -45,11 +45,11 @@ Count of cars after population: 15
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Genes of the first car: 0.4081014 0.756479
+Genes of the first car: 0.3557171 0.6659615
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Genes of the second car: 0.719092 0.09654784
+Genes of the second car: 0.9092002 0.3129534
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
@@ -118,29 +118,5 @@ Time: 0
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 2fc0 -> priority: 1 
-  Thread -> id: 2090 -> priority: 1 
-Time taken: 30936 ms
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Time taken: 33614 ms
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Time taken: 26197 ms
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-ArgumentOutOfRangeException: Argument is out of range.
-Parameter name: index
-  at System.Collections.Generic.List`1[UnityEngine.Transform].get_Item (Int32 index) [0x00000] in <filename unknown>:0 
-  at CarEngine.Next () [0x00000] in <filename unknown>:0 
-  at CarEngine.FixedUpdate () [0x00000] in <filename unknown>:0 
- 
-(Filename:  Line: -1)
-
-Time taken: 30051 ms
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
+  Thread -> id: 1690 -> priority: 1 
+  Thread -> id: 15c8 -> priority: 1 
