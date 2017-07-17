@@ -1,9 +1,9 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Car AI GA.Plugins", "Car AI GA.Plugins.csproj", "{C09F9655-0C3F-FBA1-E025-45A1471C9CE5}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Car AI GA", "Assembly-CSharp-firstpass.csproj", "{9D25943B-407C-D083-295E-8585B1029562}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Car AI GA", "Car AI GA.csproj", "{33BF5B59-A686-2280-720F-831F6A07C80E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Car AI GA", "Assembly-CSharp.csproj", "{1453F616-8614-E95A-A14B-B7B03D38A69B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,16 +11,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C09F9655-0C3F-FBA1-E025-45A1471C9CE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C09F9655-0C3F-FBA1-E025-45A1471C9CE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C09F9655-0C3F-FBA1-E025-45A1471C9CE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C09F9655-0C3F-FBA1-E025-45A1471C9CE5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{33BF5B59-A686-2280-720F-831F6A07C80E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{33BF5B59-A686-2280-720F-831F6A07C80E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{33BF5B59-A686-2280-720F-831F6A07C80E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{33BF5B59-A686-2280-720F-831F6A07C80E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D25943B-407C-D083-295E-8585B1029562}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D25943B-407C-D083-295E-8585B1029562}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D25943B-407C-D083-295E-8585B1029562}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D25943B-407C-D083-295E-8585B1029562}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1453F616-8614-E95A-A14B-B7B03D38A69B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1453F616-8614-E95A-A14B-B7B03D38A69B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1453F616-8614-E95A-A14B-B7B03D38A69B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1453F616-8614-E95A-A14B-B7B03D38A69B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal

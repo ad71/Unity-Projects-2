@@ -21,14 +21,82 @@ Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Tr
 Loading C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\InputSimulator.dll (this message is harmless)
 Loading C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\InputSimulator.dll into Unity Child Domain
-- Completed reload, in  0.578 seconds
+- Completed reload, in  0.041 seconds
 Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\System.dll (this message is harmless)
 desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 41.128658 ms
+UnloadTime: 1.568291 ms
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 1338 -> priority: 1 
-  Thread -> id: 9a8 -> priority: 1 
+  Thread -> id: 1b00 -> priority: 1 
+  Thread -> id: fcc -> priority: 1 
+Initialize engine version: 5.6.1f1 (2860b30f0b54)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: Intel(R) HD Graphics 5500 (ID=0x1616)
+    Vendor:   Intel
+    VRAM:     1642 MB
+    Driver:   20.19.15.4642
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\InputSimulator.dll (this message is harmless)
+Loading C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\InputSimulator.dll into Unity Child Domain
+- Completed reload, in  0.030 seconds
+Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\System.dll (this message is harmless)
+desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.743800 ms
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 10c4 -> priority: 1 
+  Thread -> id: 12c8 -> priority: 1 
+Initialize engine version: 5.6.1f1 (2860b30f0b54)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: Intel(R) HD Graphics 5500 (ID=0x1616)
+    Vendor:   Intel
+    VRAM:     1642 MB
+    Driver:   20.19.15.4642
+Begin MonoManager ReloadAssembly
+Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\Assembly-UnityScript.dll (this message is harmless)
+Loading C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\Assembly-UnityScript.dll into Unity Child Domain
+Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\InputSimulator.dll (this message is harmless)
+Loading C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\InputSimulator.dll into Unity Child Domain
+- Completed reload, in  0.031 seconds
+Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\System.dll (this message is harmless)
+desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+UnloadTime: 1.670928 ms
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 2320 -> priority: 1 
+  Thread -> id: 1ac0 -> priority: 1 
