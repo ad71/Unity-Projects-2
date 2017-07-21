@@ -14,7 +14,7 @@ public class Restart : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.R)) {
 			user.transform.position = new Vector3 (29.919f, -17.175f, -106.389f);
-			user.transform.rotation = new Quaternion (0f, 90f, 0f);
+			user.transform.rotation = new Quaternion (0f, 90f, 0f, 90f);
 		}
 	}
 }
