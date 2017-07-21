@@ -21,14 +21,14 @@ Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Tr
 Loading C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
 Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\InputSimulator.dll (this message is harmless)
 Loading C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\InputSimulator.dll into Unity Child Domain
-- Completed reload, in  0.034 seconds
+- Completed reload, in  0.031 seconds
 Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI 3\Builds\Track_Data\Managed\System.dll (this message is harmless)
 desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.578555 ms
+UnloadTime: 1.619097 ms
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: d9c -> priority: 1 
-  Thread -> id: 226c -> priority: 1 
+  Thread -> id: 1ed4 -> priority: 1 
+  Thread -> id: 53c -> priority: 1 
