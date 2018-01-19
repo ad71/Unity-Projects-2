@@ -1,11 +1,11 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2017
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terrain Generation Sandbox.Plugins", "Terrain Generation Sandbox.Plugins.csproj", "{762A55AC-3223-438B-E7DD-005ECE025DD3}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terrain Generation Sandbox", "Assembly-CSharp-firstpass.csproj", "{85A6C1F2-8D91-706E-460C-1597AF142CE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terrain Generation Sandbox", "Terrain Generation Sandbox.csproj", "{D5F45ACA-CBA6-D37D-A0D2-AEE24EC09009}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terrain Generation Sandbox", "Assembly-CSharp.csproj", "{A1F37854-238E-82D5-EA49-3E81128B71A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terrain Generation Sandbox.Editor.Plugins", "Terrain Generation Sandbox.Editor.Plugins.csproj", "{13AE72ED-AA3E-A10B-72B5-7F7280B00B0F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Terrain Generation Sandbox", "Assembly-CSharp-Editor-firstpass.csproj", "{A89C01A1-EAFF-6A01-11B0-CE262E90934A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,20 +13,23 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{762A55AC-3223-438B-E7DD-005ECE025DD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{762A55AC-3223-438B-E7DD-005ECE025DD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{762A55AC-3223-438B-E7DD-005ECE025DD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{762A55AC-3223-438B-E7DD-005ECE025DD3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D5F45ACA-CBA6-D37D-A0D2-AEE24EC09009}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D5F45ACA-CBA6-D37D-A0D2-AEE24EC09009}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D5F45ACA-CBA6-D37D-A0D2-AEE24EC09009}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D5F45ACA-CBA6-D37D-A0D2-AEE24EC09009}.Release|Any CPU.Build.0 = Release|Any CPU
-		{13AE72ED-AA3E-A10B-72B5-7F7280B00B0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{13AE72ED-AA3E-A10B-72B5-7F7280B00B0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{13AE72ED-AA3E-A10B-72B5-7F7280B00B0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{13AE72ED-AA3E-A10B-72B5-7F7280B00B0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85A6C1F2-8D91-706E-460C-1597AF142CE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85A6C1F2-8D91-706E-460C-1597AF142CE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85A6C1F2-8D91-706E-460C-1597AF142CE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85A6C1F2-8D91-706E-460C-1597AF142CE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1F37854-238E-82D5-EA49-3E81128B71A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1F37854-238E-82D5-EA49-3E81128B71A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1F37854-238E-82D5-EA49-3E81128B71A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1F37854-238E-82D5-EA49-3E81128B71A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A89C01A1-EAFF-6A01-11B0-CE262E90934A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A89C01A1-EAFF-6A01-11B0-CE262E90934A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A89C01A1-EAFF-6A01-11B0-CE262E90934A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A89C01A1-EAFF-6A01-11B0-CE262E90934A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal
