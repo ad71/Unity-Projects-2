@@ -17,14 +17,14 @@ Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Builds\C
 Loading C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Builds\Car AI_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Builds\Car AI_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Builds\Car AI_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.471 seconds
+- Completed reload, in  0.737 seconds
 Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Builds\Car AI_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Aman Deep Singh\Documents\Unity-2\Car AI GA\Builds\Car AI_Data\Managed\System.dll (this message is harmless)
-desktop: 1366x768 60Hz; virtual: 2732x768 at 0,0
+desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 28.833872 ms
+UnloadTime: 58.970600 ms
 Init, gameobject array cars count: 0
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
@@ -45,11 +45,11 @@ Count of cars after population: 15
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Genes of the first car: 0.2568613 0.2261167
+Genes of the first car: 0.4317386 0.1506997
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Genes of the second car: 0.4791867 0.2815124
+Genes of the second car: 0.47512 0.7185948
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
@@ -118,9 +118,13 @@ Time: 0
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 31d0 -> priority: 1 
-  Thread -> id: 2fa8 -> priority: 1 
-Time taken: 87412 ms
+  Thread -> id: dd0 -> priority: 1 
+  Thread -> id: eec -> priority: 1 
+Time taken: 355117 ms
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Time taken: 68355 ms
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
