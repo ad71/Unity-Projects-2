@@ -33,3 +33,5 @@ A modified genetic algorithm is used to optimize  over the DNA sequence in order
 
 ### Visualization
 A [visualization tool](https://github.com/ad71/Data-Science/blob/master/Data%20Visualization/car_ai_genes.py) plots the genes across generations to help analyze the correlation between genes and [another](https://github.com/ad71/Data-Science/blob/master/Data%20Visualization/car_ai_genes_plot.py) plots the fitness of the respective genomes.
+
+![title](https://github.com/ad71/Unity-Projects-2/tree/master/Car%20AI%20GA/ss.jpg)
